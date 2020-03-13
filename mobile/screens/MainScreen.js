@@ -1,19 +1,76 @@
 import React, {useState, useReducer} from 'react';
-import { View, Text, StyleSheet, Button} from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+
+import config from '../extension/config';
 
 const MainScreen = props => {
 
     const [isLogged, setIsLogged] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const changeLoggedState = (state) => {
         setIsLogged(state);
     };
 
+    const emailInputHandler = (enteredEmail) => {
+        setEmail(enteredEmail);
+    };
+
+    const passwordInputHandler = (enteredPassword) => {
+        setPassword(enteredPassword);
+    };
+
+    const login = async () => {
+
+        const res = await fetch(`${config.serverURL}/api/users/login`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                password: password,
+                email: email
+            })
+        });
+        
+        if (res.status == 404)
+            Alert.alert('ERROR', 'User not registered.');
+        else
+            changeLoggedState(true);
+    };
+
+    const logout = async () => {
+        const res = await fetch(`${config.serverURL}/api/users/logout`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email
+            })
+        });
+        
+        changeLoggedState(false);
+        
+    };
+
     let content = (
         <View>
+            <TextInput
+                placeholder="E-mail"
+                value={email}
+                onChangeText={emailInputHandler}
+            />
+            <TextInput
+                placeholder="Password"
+                value={password}
+                onChangeText={passwordInputHandler}
+                secureTextEntry={true}
+            />
             <Button
                 title='Login'
-                onPress={() => changeLoggedState(true)}
+                onPress={login}
             />
             <Button
                 title='Register'
@@ -35,7 +92,7 @@ const MainScreen = props => {
                 />
                 <Button
                     title='Logout'
-                    onPress={() => changeLoggedState(false)}
+                    onPress={logout}
                 />
             </View>
         );
