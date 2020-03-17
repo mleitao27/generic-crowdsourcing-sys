@@ -4,6 +4,7 @@ import { View, Alert, TextInput } from 'react-native';
 import config from '../extension/config';
 import globalStyles from '../constants/styles';
 import Colors from '../constants/colors';
+
 import CustomButton from '../components/CustomButton';
 
 const RegisterScreen = props => {

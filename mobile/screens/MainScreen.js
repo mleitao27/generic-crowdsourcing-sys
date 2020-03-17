@@ -1,11 +1,12 @@
 import React, {useState, useReducer} from 'react';
-import { View, Text, StyleSheet, Button, TextInput, Dimensions, Alert } from 'react-native';
-
-import CustomButton from '../components/CustomButton';
+import { View, Text, TextInput, Alert } from 'react-native';
 
 import config from '../extension/config';
 import globalStyles from '../constants/styles';
 import Colors from '../constants/colors';
+
+import CustomButton from '../components/CustomButton';
+import UserScreen from './UserScreen';
 
 const MainScreen = props => {
 
@@ -49,21 +50,6 @@ const MainScreen = props => {
 
     };
 
-    const logout = async () => {
-        const res = await fetch(`${config.serverURL}/api/users/logout`,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email
-            })
-        });
-        
-        changeLoggedState(false);
-        
-    };
-
     let content = (
         <View style={globalStyles.screen} >
             <Text style={globalStyles.title}>Welcome!</Text>
@@ -98,28 +84,7 @@ const MainScreen = props => {
     );
 
     if (isLogged)
-        content = (
-            <View>
-                <CustomButton
-                    title='Form'
-                    onPress={() => props.navigation.navigate({routeName: 'Form'})}
-                    backgroundColor={Colors.primary}
-                    textColor={Colors.secondary}
-                />
-                <CustomButton
-                    title='Results'
-                    onPress={() => props.navigation.navigate({routeName: 'Results'})}
-                    backgroundColor={Colors.primary}
-                    textColor={Colors.secondary}
-                />
-                <CustomButton
-                    title='Logout'
-                    onPress={logout}
-                    backgroundColor={Colors.primary}
-                    textColor={Colors.secondary}
-                />
-            </View>
-        );
+        content = <UserScreen navigation={props.navigation} onLogout={changeLoggedState} email={email} />;
 
     return (
         <View style={globalStyles.screen} >
