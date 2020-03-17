@@ -1,24 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text } from 'react-native';
+
+import globalStyles from '../constants/styles';
+import Colors from '../constants/colors';
+
+import CustomButton from '../components/CustomButton';
 
 const FormScreen = props => {
     return (
-        <View>
-            <Text>FormScreen</Text>
-            <Button
+        <View style={globalStyles.screen}>
+            <CustomButton
                 title='Results'
                 onPress={() => props.navigation.navigate({routeName: 'Results'})}
+                backgroundColor={Colors.primary}
+                textColor={Colors.secondary}
             />
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
 export default FormScreen;

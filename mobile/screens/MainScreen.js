@@ -1,7 +1,11 @@
 import React, {useState, useReducer} from 'react';
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput, Dimensions, Alert } from 'react-native';
+
+import CustomButton from '../components/CustomButton';
 
 import config from '../extension/config';
+import globalStyles from '../constants/styles';
+import Colors from '../constants/colors';
 
 const MainScreen = props => {
 
@@ -23,21 +27,26 @@ const MainScreen = props => {
 
     const login = async () => {
 
-        const res = await fetch(`${config.serverURL}/api/users/login`,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                password: password,
-                email: email
-            })
-        });
-        
-        if (res.status == 404)
-            Alert.alert('ERROR', 'User not registered.');
-        else
-            changeLoggedState(true);
+        if (email.trim() !== '' && password.trim() !== '') {
+            const res = await fetch(`${config.serverURL}/api/users/login`,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    password: password,
+                    email: email
+                })
+            });
+            
+            if (res.status == 404)
+                Alert.alert('ERROR', 'User not registered.');
+            else
+                changeLoggedState(true);
+        } else {
+            Alert.alert('ERROR', 'All fields must be filled');
+        }
+
     };
 
     const logout = async () => {
@@ -56,61 +65,67 @@ const MainScreen = props => {
     };
 
     let content = (
-        <View>
-            <TextInput
-                placeholder="E-mail"
-                value={email}
-                onChangeText={emailInputHandler}
-            />
-            <TextInput
-                placeholder="Password"
-                value={password}
-                onChangeText={passwordInputHandler}
-                secureTextEntry={true}
-            />
-            <Button
-                title='Login'
-                onPress={login}
-            />
-            <Button
-                title='Register'
-                onPress={() => props.navigation.navigate({routeName: 'Register'})}
-            />
+        <View style={globalStyles.screen} >
+            <Text style={globalStyles.title}>Welcome!</Text>
+            <View style={globalStyles.formContainer}>
+                <TextInput
+                    style={globalStyles.formElement}
+                    placeholder="E-mail"
+                    value={email}
+                    onChangeText={emailInputHandler}
+                    />
+                <TextInput
+                    style={globalStyles.formElement}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={passwordInputHandler}
+                    secureTextEntry={true}
+                    />
+                <CustomButton
+                    title='Login'
+                    onPress={login}
+                    backgroundColor={Colors.secondary}
+                    textColor={Colors.primary}
+                    />
+                <CustomButton
+                    title='Register'
+                    onPress={() => props.navigation.navigate({routeName: 'Register'})}
+                    backgroundColor={Colors.secondary}
+                    textColor={Colors.primary}                
+                    />
+            </View>
         </View>
     );
 
     if (isLogged)
         content = (
             <View>
-                <Button
+                <CustomButton
                     title='Form'
                     onPress={() => props.navigation.navigate({routeName: 'Form'})}
+                    backgroundColor={Colors.primary}
+                    textColor={Colors.secondary}
                 />
-                <Button
+                <CustomButton
                     title='Results'
                     onPress={() => props.navigation.navigate({routeName: 'Results'})}
+                    backgroundColor={Colors.primary}
+                    textColor={Colors.secondary}
                 />
-                <Button
+                <CustomButton
                     title='Logout'
                     onPress={logout}
+                    backgroundColor={Colors.primary}
+                    textColor={Colors.secondary}
                 />
             </View>
         );
 
     return (
-        <View>
-            <Text>MainScreen</Text>
+        <View style={globalStyles.screen} >
             {content}        
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
 export default MainScreen;

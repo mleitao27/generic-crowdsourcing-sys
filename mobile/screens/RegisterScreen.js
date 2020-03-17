@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert, TextInput } from 'react-native';
+import { View, Alert, TextInput } from 'react-native';
 
 import config from '../extension/config';
+import globalStyles from '../constants/styles';
+import Colors from '../constants/colors';
+import CustomButton from '../components/CustomButton';
 
 const RegisterScreen = props => {
 
@@ -22,58 +25,60 @@ const RegisterScreen = props => {
     };
     
     const register = async () => {
-        const res = await fetch(`${config.serverURL}/api/users/register`,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                password: password,
-                email: email,
-                type: 'normal'
-            })
-        });
-
-        if (res.status == 302)
-            Alert.alert('ERROR', 'User already registered with that e-mail.');
-        else
-            props.navigation.pop();
+        if (name.trim() !== '' && email.trim() !== '' && password.trim() !== '') {
+            const res = await fetch(`${config.serverURL}/api/users/register`,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    password: password,
+                    email: email,
+                    type: 'normal'
+                })
+            });
+    
+            if (res.status == 302)
+                Alert.alert('ERROR', 'User already registered with that e-mail.');
+            else
+                props.navigation.pop();
+        } else {
+            Alert.alert('ERROR', 'All fields must be filled');
+        }
     };
 
     return (
-        <View>
-            <Text>RegisterScreen</Text>
-            <TextInput
-                placeholder="Name"
-                value={name}
-                onChangeText={nameInputHandler}
-            />
-            <TextInput
-                placeholder="E-mail"
-                value={email}
-                onChangeText={emailInputHandler}
-            />
-            <TextInput
-                placeholder="Password"
-                value={password}
-                onChangeText={passwordInputHandler}
-                secureTextEntry={true}
-            />
-            <Button
-                title='Register'
-                onPress={register}
+        <View style={globalStyles.screen}>
+            <View style={globalStyles.formContainer}>
+                <TextInput
+                    style={globalStyles.formElement}
+                    placeholder="Name"
+                    value={name}
+                    onChangeText={nameInputHandler}
                 />
+                <TextInput
+                    style={globalStyles.formElement}
+                    placeholder="E-mail"
+                    value={email}
+                    onChangeText={emailInputHandler}
+                />
+                <TextInput
+                    style={globalStyles.formElement}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={passwordInputHandler}
+                    secureTextEntry={true}
+                />
+                <CustomButton
+                    title='Register'
+                    onPress={register}
+                    backgroundColor={Colors.secondary}
+                    textColor={Colors.primary}    
+                />
+            </View>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
 
 export default RegisterScreen;
