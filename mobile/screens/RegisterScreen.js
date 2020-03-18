@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Alert, TextInput } from 'react-native';
 
 import config from '../extension/config';
-import globalStyles from '../constants/styles';
+import globalStyles from '../constants/globalStyles';
 import Colors from '../constants/colors';
 
 import CustomButton from '../components/CustomButton';

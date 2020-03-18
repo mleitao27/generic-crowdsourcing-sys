@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import globalStyles from '../constants/styles';
+import globalStyles from '../constants/globalStyles';
 import Colors from '../constants/colors';
 
 import CustomButton from '../components/CustomButton';

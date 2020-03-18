@@ -5,7 +5,7 @@ import Colors from './colors';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const styles = StyleSheet.create({
+const globalStyles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default styles;
+export default globalStyles;

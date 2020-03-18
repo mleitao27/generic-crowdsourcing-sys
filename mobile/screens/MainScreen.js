@@ -1,12 +1,13 @@
 import React, {useState, useReducer} from 'react';
-import { View, Text, TextInput, Alert } from 'react-native';
+import { View, Text, TextInput, Alert, Button } from 'react-native';
 
 import config from '../extension/config';
-import globalStyles from '../constants/styles';
+import globalStyles from '../constants/globalStyles';
 import Colors from '../constants/colors';
 
 import CustomButton from '../components/CustomButton';
 import UserScreen from './UserScreen';
+import OAuthButtons from '../extension/OAuthButtons';
 
 const MainScreen = props => {
 
@@ -79,6 +80,7 @@ const MainScreen = props => {
                     backgroundColor={Colors.secondary}
                     textColor={Colors.primary}                
                     />
+                <OAuthButtons />
             </View>
         </View>
     );
@@ -90,6 +92,22 @@ const MainScreen = props => {
         <View style={globalStyles.screen} >
             {content}        
         </View>
+    );
+};
+
+MainScreen.navigationOptions = (navData) => {
+    return (
+        {
+            headerTitle: 'Crowdsourcing',
+            /*headerLeft: (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                    <Item title='menu' iconName='ios-menu' onPress={() => {
+                        navData.navigation.toggleDrawer();
+                    }}/>
+                </HeaderButtons>
+            )*/
+
+        }
     );
 };
 
