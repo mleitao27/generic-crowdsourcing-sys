@@ -53,7 +53,8 @@ const OAuthButtons = props => {
             'token': response.tokenId,
             'user': response.Ca,
             'name': response.Rt.Ad,
-            'email': response.Rt.Au
+            'email': response.Rt.Au,
+            'type': 'pending'
         };
 
         // Login or register user with server

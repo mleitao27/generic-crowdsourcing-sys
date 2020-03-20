@@ -15,7 +15,8 @@ const defaultStackNavOptions = {
         backgroundColor: Colors.primary
     },
     headerTitleAlign: 'center',
-    headerTintColor: 'white' 
+    headerTintColor: 'white',
+    headerBackTitle: 'Back'
 };
 
 const MainNavigator = createStackNavigator({

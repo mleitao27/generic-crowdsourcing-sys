@@ -5,6 +5,7 @@ import config from '../extension/config';
 import globalStyles from '../constants/globalStyles';
 import Colors from '../constants/colors';
 
+import OAuthButtons from '../extension/OAuthButtons';
 import CustomButton from '../components/CustomButton';
 
 const RegisterScreen = props => {
@@ -55,18 +56,21 @@ const RegisterScreen = props => {
                 <TextInput
                     style={globalStyles.formElement}
                     placeholder="Name"
+                    placeholderTextColor="#ccc"
                     value={name}
                     onChangeText={nameInputHandler}
                 />
                 <TextInput
                     style={globalStyles.formElement}
                     placeholder="E-mail"
+                    placeholderTextColor="#ccc"
                     value={email}
                     onChangeText={emailInputHandler}
                 />
                 <TextInput
                     style={globalStyles.formElement}
                     placeholder="Password"
+                    placeholderTextColor="#ccc"
                     value={password}
                     onChangeText={passwordInputHandler}
                     secureTextEntry={true}
@@ -77,6 +81,7 @@ const RegisterScreen = props => {
                     backgroundColor={Colors.secondary}
                     textColor={Colors.primary}    
                 />
+                <OAuthButtons method={'register'} navigation={props.navigation}/>
             </View>
         </View>
     );

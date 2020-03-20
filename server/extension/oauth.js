@@ -23,7 +23,7 @@ const registerHandler = async (accessData) => {
                     email: accessData.email,
                     platform: accessData.platform,
                     oauthId: accessData.user,
-                    type: 'pending'
+                    type: accessData.type
                 };
                 // Insert in the DB if it's a new user
                 await users.insertOne(newUser);

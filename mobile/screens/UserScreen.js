@@ -19,7 +19,7 @@ const UserScreen = props => {
             })
         });
         
-        props.onLogout(false);
+        props.onLogout(false, '', '');
     };
 
     return (

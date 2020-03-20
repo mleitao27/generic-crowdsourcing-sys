@@ -16,7 +16,7 @@ const CustomButton = props => {
 
     let ButtonComponent = TouchableOpacity;
 
-    if (Platform.Version >= 21) {
+    if (Platform.OS === 'android' && Platform.Version >= 21) {
         ButtonComponent = TouchableNativeFeedback;
     }
 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         height: windowHeight * 0.06,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 20
     },
     buttonText: {
         fontSize: windowWidth * 0.05

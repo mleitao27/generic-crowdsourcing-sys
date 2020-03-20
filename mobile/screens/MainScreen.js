@@ -1,5 +1,13 @@
 import React, {useState, useReducer} from 'react';
-import { View, Text, TextInput, Alert, Button } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    Alert,
+    TouchableOpacity, 
+    Dimensions,
+    StyleSheet
+} from 'react-native';
 
 import config from '../extension/config';
 import globalStyles from '../constants/globalStyles';
@@ -9,14 +17,18 @@ import CustomButton from '../components/CustomButton';
 import UserScreen from './UserScreen';
 import OAuthButtons from '../extension/OAuthButtons';
 
+const windowWidth = Dimensions.get('window').width;
+
 const MainScreen = props => {
 
     const [isLogged, setIsLogged] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const changeLoggedState = (state) => {
+    
+    const changeLoggedState = (state, email, password) => {
         setIsLogged(state);
+        setEmail(email);
+        setPassword(password);
     };
 
     const emailInputHandler = (enteredEmail) => {
@@ -44,7 +56,7 @@ const MainScreen = props => {
             if (res.status == 404)
                 Alert.alert('ERROR', 'User not registered.');
             else
-                changeLoggedState(true);
+                changeLoggedState(true, email, password);
         } else {
             Alert.alert('ERROR', 'All fields must be filled');
         }
@@ -58,12 +70,14 @@ const MainScreen = props => {
                 <TextInput
                     style={globalStyles.formElement}
                     placeholder="E-mail"
+                    placeholderTextColor="#ccc"
                     value={email}
                     onChangeText={emailInputHandler}
                     />
                 <TextInput
                     style={globalStyles.formElement}
                     placeholder="Password"
+                    placeholderTextColor="#ccc"
                     value={password}
                     onChangeText={passwordInputHandler}
                     secureTextEntry={true}
@@ -74,13 +88,14 @@ const MainScreen = props => {
                     backgroundColor={Colors.secondary}
                     textColor={Colors.primary}
                     />
-                <CustomButton
-                    title='Register'
-                    onPress={() => props.navigation.navigate({routeName: 'Register'})}
-                    backgroundColor={Colors.secondary}
-                    textColor={Colors.primary}                
-                    />
-                <OAuthButtons />
+                <OAuthButtons method={'login'} onLogin={changeLoggedState} />
+
+                <View style={styles.textContainer}>
+                    <Text style={styles.text}>Not registered yet? </Text>
+                    <TouchableOpacity onPress={() => props.navigation.navigate({routeName: 'Register'})}>
+                        <Text style={[styles.text, styles.textUnderline]}>Click here!</Text>
+                        </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
@@ -95,18 +110,23 @@ const MainScreen = props => {
     );
 };
 
+const styles = StyleSheet.create({
+    textContainer: {
+        flexDirection: 'row'
+    },
+    text: {
+        color:'#ccc',
+        fontSize: windowWidth*0.04
+    },
+    textUnderline: {
+        textDecorationLine: 'underline'
+    }
+});
+
 MainScreen.navigationOptions = (navData) => {
     return (
         {
-            headerTitle: 'Crowdsourcing',
-            /*headerLeft: (
-                <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                    <Item title='menu' iconName='ios-menu' onPress={() => {
-                        navData.navigation.toggleDrawer();
-                    }}/>
-                </HeaderButtons>
-            )*/
-
+            headerTitle: 'Crowdsourcing'
         }
     );
 };

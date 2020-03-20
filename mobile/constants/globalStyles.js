@@ -13,26 +13,27 @@ const globalStyles = StyleSheet.create({
     },
     formContainer: {
         marginVertical: windowHeight * 0.05,
-        paddingVertical: windowHeight * 0.1,
+        paddingVertical: windowHeight * 0.05,
         justifyContent: 'space-between',
         alignItems: 'center',
         width: windowWidth * 0.7,
         height: windowHeight * 0.6,
         borderRadius: 20,
         backgroundColor: Colors.primary,
-        alignItems: "center",
+        alignItems: "center"
     },
     formElement: {
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 25,
         borderColor: Colors.secondary,
-        width: windowWidth * 0.5,
+        width: windowWidth * 0.55,
+        height: windowHeight * 0.06,
         padding: 10,
         color: 'white'
     },
     title: {
         color: Colors.primary,
-        fontSize: 20
+        fontSize: windowWidth * 0.1
     }
 });
 
