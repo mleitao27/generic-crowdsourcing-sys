@@ -1,12 +1,10 @@
-import React from 'react';
-import { Platform } from 'react-native';
 import { createStackNavigator, TransitionSpecs } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 
-import MainScreen from '../screens/MainScreen';
-import FormScreen from '../screens/FormScreen';
-import ResultsScreen from '../screens/ResultsScreen';
-import RegisterScreen from '../screens/RegisterScreen';
+import MainScreen from '../components/screens/MainScreen';
+import FormScreen from '../components/screens/FormScreen';
+import ResultsScreen from '../components/screens/ResultsScreen';
+import RegisterScreen from '../components/screens/RegisterScreen';
 
 import Colors from '../constants/colors';
 

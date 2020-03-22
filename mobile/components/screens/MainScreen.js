@@ -9,13 +9,13 @@ import {
     StyleSheet
 } from 'react-native';
 
-import config from '../extension/config';
-import globalStyles from '../constants/globalStyles';
-import Colors from '../constants/colors';
+import config from '../../extension/config';
+import globalStyles from '../../constants/globalStyles';
+import Colors from '../../constants/colors';
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../CustomButton';
 import UserScreen from './UserScreen';
-import OAuthButtons from '../extension/OAuthButtons';
+import OAuthButtons from '../../extension/OAuthButtons';
 
 const windowWidth = Dimensions.get('window').width;
 
