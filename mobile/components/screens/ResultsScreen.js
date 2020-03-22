@@ -2,10 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 
 
-import globalStyles from '../constants/globalStyles';
-import Colors from '../constants/colors';
+import globalStyles from '../../constants/globalStyles';
+import Colors from '../../constants/colors';
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../CustomButton';
 
 const ResultsScreen = props => {
     return (

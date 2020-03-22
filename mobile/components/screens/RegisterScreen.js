@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, Alert, TextInput } from 'react-native';
 
-import config from '../extension/config';
-import globalStyles from '../constants/globalStyles';
-import Colors from '../constants/colors';
+import config from '../../extension/config';
+import globalStyles from '../../constants/globalStyles';
+import Colors from '../../constants/colors';
 
-import OAuthButtons from '../extension/OAuthButtons';
-import CustomButton from '../components/CustomButton';
+import OAuthButtons from '../../extension/OAuthButtons';
+import CustomButton from '../CustomButton';
 
 const RegisterScreen = props => {
 

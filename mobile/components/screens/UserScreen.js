@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import Colors from '../constants/colors';
-import config from '../extension/config';
+import Colors from '../../constants/colors';
+import config from '../../extension/config';
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../CustomButton';
 
 const UserScreen = props => {
 
