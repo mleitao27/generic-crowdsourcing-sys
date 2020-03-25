@@ -4,6 +4,7 @@ import axios from 'axios';
 import ExpiredSessionPage from './ExpiredSessionPage';
 import UserList from '../UserList';
 import config from '../../extension/config';
+import MainButton from '../MainButton';
 
 const AdminPage = props => {
 
@@ -99,7 +100,7 @@ const AdminPage = props => {
     let content = (
         <React.Fragment>
             <UserList userList={userList} changeUserType={changeUserType} removeUser={removeUser}/>
-            <div style={{display: 'flex', width: '100%', justifyContent: 'center'}}><button className="mainButton" onClick={renderUserList}>USER LIST</button></div>
+            <MainButton title='USER LIST' onClick={renderUserList} />
         </React.Fragment>
     );
 
@@ -108,7 +109,7 @@ const AdminPage = props => {
         content = (
             <React.Fragment>
                 <h3>No users found in the database!</h3>
-                <div style={{display: 'flex', width: '100%', justifyContent: 'center'}}><button className="mainButton" onClick={renderUserList}>USER LIST</button></div>
+                <MainButton title='USER LIST' onClick={renderUserList} />
             </React.Fragment>
         );
 

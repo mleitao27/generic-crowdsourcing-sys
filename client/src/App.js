@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import './extension/Extension.css';
 
 import Header from './components/layout/Header';
 import LandingPage from './components/pages/LandingPage';

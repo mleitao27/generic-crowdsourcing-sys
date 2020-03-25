@@ -33,7 +33,7 @@ const Register = props => {
             'name': name,
             'password': password,
             'email': email,
-            'type': 'pending'
+            'type': 'normal'
         };
 
         // If user not registered yet, add user to system
