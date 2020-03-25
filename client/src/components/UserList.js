@@ -11,7 +11,7 @@ const UserList = props => {
             <UserItem
             key={user.email}
             user={user}
-            approveResearcher={props.changeUserType}
+            changeUserType={props.changeUserType}
             removeUser={props.removeUser}
             />
         );
