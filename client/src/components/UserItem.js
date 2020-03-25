@@ -10,6 +10,10 @@ const UserItem = props => {
         // Approve and remove buttons
         buttons = (
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <label className="switch">
+                    <input type="checkbox"/>
+                    <span className="slider round"></span>
+                </label>
                 <button className="greenButton" onClick={props.approveResearcher.bind(this, props.user.email, 'researcher')}>Approve</button>
                 {' '}
                 <button className="redButton" onClick={props.removeUser.bind(this, props.user.email)}>Remove</button>
