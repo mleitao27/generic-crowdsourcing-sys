@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import OAuthButtons from '../../extension/OAuthButtons';
+import OAuthButtons from '../extension/OAuthButtons';
 import axios from 'axios';
 
-import config from '../../extension/config';
+import config from '../extension/config';
 
 const Register = props => {
 

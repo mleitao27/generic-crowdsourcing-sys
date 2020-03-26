@@ -6,11 +6,11 @@ import './App.css';
 import './extension/Extension.css';
 
 import Header from './components/layout/Header';
-import LandingPage from './components/pages/LandingPage';
-import RegisterPage from './components/pages/RegisterPage';
-import LoginPage from './components/pages/LoginPage';
-import LogoutPage from './components/pages/LogoutPage';
-import AdminPage from './components/pages/AdminPage';
+import LandingPage from './pages/LandingPage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import LogoutPage from './pages/LogoutPage';
+import AdminPage from './pages/AdminPage';
 
 const App = props => {
 

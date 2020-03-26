@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
-import OAuthButtons from'../../extension/OAuthButtons';
-import config from'../../extension/config';
+import OAuthButtons from'../extension/OAuthButtons';
+import config from'../extension/config';
 
 const LoginPage = props => {
 
