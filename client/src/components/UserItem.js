@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoIosRemoveCircle } from "react-icons/io";
 
 const UserItem = props => {
 
@@ -16,10 +17,10 @@ const UserItem = props => {
             <p style={{display: 'flex', alignItems: 'center'}}>{props.user.name}{' - '}{props.user.email}{' - '}{props.user.type}</p>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <label className="switch">
-                    <input type="checkbox" onClick={toggleType}/>
+                    <input type="checkbox" onChange={toggleType} checked={props.user.type === 'researcher' ? true : false}/>
                     <span className="slider round"></span>
                 </label>
-                <button className="redButton" onClick={props.removeUser.bind(this, props.user.email)}>Remove</button>
+                <IoIosRemoveCircle style={{color: '#cc0000', fontSize: 36}} onClick={props.removeUser.bind(this, props.user.email)}/>
             </div>
         </div>
     );

@@ -61,21 +61,6 @@ a {
   font-weight: bold;
 }
 
-.greenButton {
-  color: #fff;
-  background-color: #009900;
-  border: 1px solid #009900;
-  border-radius: 8px !important;
-  border-width: 1vh;
-  outline: none;
-  margin: 0 1vw;
-}
-
-.greenButton:active {
-  background-color: #004d00;
-  border-color: #004d00;
-}
-
 .redButton {
   color: #fff;
   background-color: #cc0000;
@@ -150,11 +135,11 @@ a {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #333;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #333;
 }
 
 input:checked + .slider:before {

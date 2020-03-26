@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import ExpiredSessionPage from './ExpiredSessionPage';
-import UserList from '../UserList';
-import config from '../../extension/config';
-import MainButton from '../MainButton';
+import UserList from '../components/UserList';
+import config from '../extension/config';
+import MainButton from '../components/MainButton';
 
 const AdminPage = props => {
 
