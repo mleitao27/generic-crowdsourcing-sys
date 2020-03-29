@@ -15,6 +15,19 @@ const FormScreen = props => {
                 backgroundColor={Colors.primary}
                 textColor={Colors.secondary}
             />
+            <CustomButton
+                title='Test1'
+                onPress={() => props.navigation.navigate({routeName: 'Test1'})}
+                backgroundColor={Colors.primary}
+                textColor={Colors.secondary}
+            />
+            <CustomButton
+                title='Test2'
+                onPress={() => props.navigation.navigate({routeName: 'Test2'})}
+                backgroundColor={Colors.primary}
+                textColor={Colors.secondary}
+            />
+            
         </View>
     );
 };
