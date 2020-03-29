@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
 import config from '../extension/config';
+import MainButton from '../components/MainButton';
 
 const LogoutPage = props => {
 
@@ -24,15 +25,15 @@ const LogoutPage = props => {
     };
 
     // Default content with logout button
-    let content = <button  className="submit formElement" onClick={logout}>Logout</button>;
+    let content = <MainButton title='Logout' onClick={logout}/>;
 
     // If user not logged redirect to main page
     if (!props.isLogged) content = <Redirect to='/' />;
 
     return (
         <React.Fragment>
-            <div className='formContainer'>
-                <h1>LOGOUT</h1>
+            <div className='centerBox'>
+                <h1>Sorry to see you leave.</h1>
                 {content}
             </div>
         </React.Fragment>

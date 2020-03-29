@@ -7,7 +7,7 @@ const admin = [
 ];
 
 // Set cache timeout
-const userTimeout = 3600;
+const userTimeout = 10;
 
 // Exports
 exports.admin = admin;
