@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Picker } from 'react-native';
+import { Picker, Text, View } from 'react-native';
 
 const DropdownElement = props => {
 
@@ -15,14 +15,17 @@ const DropdownElement = props => {
     };
 
     return (
-        <Picker
-            mode="dialog"
-            selectedValue={value}
-            onValueChange={pickerHandler}>
-            {props.items.map((item, index) => {
-                return (<Picker.Item label={item.name} value={item.value} key={index} />)
-            })}
-        </Picker>
+        <View>
+            <Text>{props.title}</Text>
+            <Picker
+                mode="dialog"
+                selectedValue={value}
+                onValueChange={pickerHandler}>
+                {props.items.map((item, index) => {
+                    return (<Picker.Item label={item.name} value={item.value} key={index} />)
+                })}
+            </Picker>
+        </View>
     );
 };
 
