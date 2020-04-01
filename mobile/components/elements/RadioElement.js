@@ -15,16 +15,17 @@ const RadioElement = props => {
     };
 
     return (
-        <View style={styles.container} >
+        <View>
+            <Text>{props.title}</Text>
             {props.items.map((item, index) => {
                 return (
-                    <View key={index}>
-                        <Text>{item.name}</Text>
+                    <View key={index} style={{flexDirection: 'row', alignItems:'center'}} >
                         <TouchableOpacity
                             style={styles.circle}
                             onPress={() => radioHandler(item.value)}>
                             {value === item.value && (<View style={styles.checkedCircle} />)}
                         </TouchableOpacity>
+                        <Text> {item.name}</Text>
                     </View>
                 );
             })}
@@ -33,9 +34,6 @@ const RadioElement = props => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: "row"
-    },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -47,7 +45,7 @@ const styles = StyleSheet.create({
         width: 20,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#ACACAC',
+        borderColor: '#ccc',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -55,7 +53,7 @@ const styles = StyleSheet.create({
         width: 14,
         height: 14,
         borderRadius: 7,
-        backgroundColor: '#794F9B',
+        backgroundColor: '#333',
     }
 });
 

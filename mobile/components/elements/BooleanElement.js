@@ -20,6 +20,8 @@ const BooleanElement = props => {
             <Switch 
                 onValueChange={toggleSwitch}
                 value={state}
+                thumbColor={state ? '#333' : 'white'}
+                trackColor={{false: '#ccc', true: '#ccc'}}
             />
         </View>
     );
