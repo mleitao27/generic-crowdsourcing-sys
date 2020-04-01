@@ -2,37 +2,40 @@
 	"elements": [
 		{
 			"type": "text",
-			"name": "name"
+			"name": "Text Title"
 		},
 		{
-			"type": "date",
-			"name": "name"
+			"type": "datepicker",
+			"name": "Datepicker Title"
+		},{
+			"type": "timepicker",
+			"name": "Timepicker Title"
 		},
 		{
 			"type": "imagepicker",
-			"name": "imagens",
+			"name": "Imagepicker Title",
 			"items": [
 				{
-					"name": "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
-					"value": "imagem_a"
+					"name": "imagem_a",
+					"url": "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg"
 				},
 				{
-					"name": "https://i.pinimg.com/originals/67/ab/a1/67aba171f2f192fe07a351d784807749.jpg",
-					"value": "imagem_b"
+					"name": "imagem_b",
+					"url": "https://i.pinimg.com/originals/67/ab/a1/67aba171f2f192fe07a351d784807749.jpg"
 				},
 				{
-					"name": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg",
-					"value": "imagem_c"
+					"name": "imagem_c",
+					"url": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg"
 				},
 				{
-					"name": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg",
-					"value": "imagem_d"
+					"name": "imagem_d",
+					"url": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg"
 				}
 			]
 		},
 		{
-			"type": "picker",
-			"name": "name",
+			"type": "dropdown",
+			"name": "Dropdown Title",
 			"items": [
 				{
 					"name": "item1",
@@ -50,7 +53,7 @@
 		},
 		{
 			"type": "radio",
-			"name": "name",
+			"name": "Radion Title",
 			"items": [
 				{
 					"name": "item1",
@@ -68,17 +71,17 @@
 		},
 		{
 			"type": "boolean",
-			"name": "name"
+			"name": "Boolean Title"
 		},
 		{
 			"type": "range",
-			"name": "name",
+			"name": "Range Title",
 			"min": 0,
 			"max": 200
 		},
 		{
 			"type": "checkbox",
-			"name": "name",
+			"name": "Checkbox Title",
 			"items": [
 				{
 					"name":"item1",
@@ -93,11 +96,6 @@
 					"value": "value3"
 				}
 			]
-		},
-		{
-			"type": "image",
-			"name": "name",
-			"imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/lion.jpg"
 		}
 	]
 }
