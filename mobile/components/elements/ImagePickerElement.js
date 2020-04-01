@@ -18,8 +18,8 @@ const ImagePickerElement = props => {
         {props.items.map((item, index) => {
             return (
               <View key={index}>
-                <TouchableOpacity onPress={() => imageHandler(item.value)}>
-                  <Image style={styles.image} source={{uri : item.name}} />
+                <TouchableOpacity onPress={() => imageHandler(item.name)}>
+                  <Image style={value === item.name ? styles.imageSelect : styles.image  } source={{ uri: item.url }}/>
                 </TouchableOpacity>
               </View>
             );
@@ -30,12 +30,22 @@ const ImagePickerElement = props => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 100,
-    height: 100
+    width: 95,
+    height: 95,
+    margin: 10,
+
+  },
+  imageSelect: {
+    width: 95,
+    height: 95,
+    margin: 10,
+    borderColor: '#0FECCF',
+    borderWidth: 4,
   },
   container: {
     flexDirection: "row",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   }
 });
 
