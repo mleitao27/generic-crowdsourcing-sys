@@ -16,10 +16,14 @@ const Form = props => {
         data[index] = {type: props.json.elements[index].type, value: value};
     };
 
+    const onSubmit = () => {
+        props.onSubmit(data);
+    };
+
     props.json.elements.map((e, index) => {
-        if (e.type === 'text') form.push(<TextElement key={index} onChange={onChange} index={index} />);
-        else if (e.type === 'boolean') form.push(<BooleanElement key={index} onChange={onChange} index={index} />);
-        else if (e.type === 'checkbox') form.push(<CheckboxElement key={index}/>);
+        if (e.type === 'text') form.push(<TextElement key={index} onChange={onChange} index={index} title={e.name} />);
+        else if (e.type === 'boolean') form.push(<BooleanElement key={index} onChange={onChange} index={index} title={e.name} />);
+        else if (e.type === 'checkbox') form.push(<CheckboxElement key={index} onChange={onChange} index={index} title={e.name} items={e.items} />);
 
         props.extension.map(ext => {
             if (e.type === ext.type) form.push(<ext.component key={index}/>);
@@ -29,7 +33,7 @@ const Form = props => {
     return (
         <View>
             {form}
-            <Button title='Submit' onPress={() => console.log(data)}/>
+            <Button title='Submit' onPress={onSubmit}/>
         </View>
     );
 };

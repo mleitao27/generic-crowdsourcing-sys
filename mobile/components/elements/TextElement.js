@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, View, Text } from 'react-native';
 
 const TextElement = props => {
 
@@ -15,10 +15,13 @@ const TextElement = props => {
     };
 
     return (
-        <TextInput 
-            onChangeText={inputHandler}
-            value={value}
-        />
+        <View>
+            <Text>{props.title}</Text>
+            <TextInput 
+                onChangeText={inputHandler}
+                value={value}
+            />
+        </View>
     );
 };
 
