@@ -12,9 +12,13 @@ import FormExtension from '../../extension/FormExtension';
 
 const FormScreen = props => {
 
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
         <View style={{width:'100%'}}>
-            <Form json={data} extension={FormExtension} />
+            <Form json={data} extension={FormExtension} onSubmit={onSubmit} />
 
             <CustomButton
                 title='Results'

@@ -21,10 +21,15 @@ const Form = props => {
         data[index] = {type: props.json.elements[index].type, value: value};
     };
 
+    const onSubmit = () => {
+        props.onSubmit(data);
+    };
+
     props.json.elements.map((e, index) => {
-        if (e.type === 'text') form.push(<TextElement key={index} onChange={onChange} index={index} />);
-        else if (e.type === 'boolean') form.push(<BooleanElement key={index} onChange={onChange} index={index} />);
-        else if (e.type === 'checkbox') form.push(<CheckboxElement key={index} />);
+
+         if (e.type === 'text') form.push(<TextElement key={index} onChange={onChange} index={index} title={e.name} />);
+        else if (e.type === 'boolean') form.push(<BooleanElement key={index} onChange={onChange} index={index} title={e.name} />);
+        else if (e.type === 'checkbox') form.push(<CheckboxElement key={index} onChange={onChange} index={index} title={e.name} items={e.items} />);
         else if (e.type === 'picker') form.push(<DropdownElement key={index} onChange={onChange} index={index} items={e.items} />);
         else if (e.type === 'radio') form.push(<RadioElement key={index} onChange={onChange} index={index} items={e.items} />);
         else if (e.type === 'range') form.push(<RangeElement key={index} onChange={onChange} index={index} min={e.min} max={e.max} />);
@@ -39,7 +44,7 @@ const Form = props => {
     return (
         <View>
             {form}
-            <Button title='Submit' onPress={() => console.log(data)}/>
+            <Button title='Submit' onPress={onSubmit}/>
         </View>
     );
 };

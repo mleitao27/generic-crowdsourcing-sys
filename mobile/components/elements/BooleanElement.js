@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch } from 'react-native';
+import { Switch, View, Text } from 'react-native';
 
 const BooleanElement = props => {
 
@@ -15,10 +15,13 @@ const BooleanElement = props => {
     };
 
     return (
-        <Switch 
-            onValueChange={toggleSwitch}
-            value={state}
-        />
+        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <Text>{props.title}</Text>
+            <Switch 
+                onValueChange={toggleSwitch}
+                value={state}
+            />
+        </View>
     );
 };
 
