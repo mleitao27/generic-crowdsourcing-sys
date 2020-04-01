@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, Alert } from 'react-native';
+import { Button, ScrollView } from 'react-native';
 
 import TextElement from './elements/TextElement';
 import BooleanElement from './elements/BooleanElement';
@@ -43,10 +43,10 @@ const Form = props => {
     });
 
     return (
-        <View>
+        <ScrollView>
             {form}
             <Button title='Submit' onPress={onSubmit}/>
-        </View>
+        </ScrollView>
     );
 };
 
