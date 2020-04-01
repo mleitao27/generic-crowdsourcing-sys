@@ -5,8 +5,76 @@
 			"name": "name"
 		},
 		{
+			"type": "date",
+			"name": "name"
+		},
+		{
+			"type": "imagepicker",
+			"name": "imagens",
+			"items": [
+				{
+					"name": "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg",
+					"value": "imagem_a"
+				},
+				{
+					"name": "https://i.pinimg.com/originals/67/ab/a1/67aba171f2f192fe07a351d784807749.jpg",
+					"value": "imagem_b"
+				},
+				{
+					"name": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg",
+					"value": "imagem_c"
+				},
+				{
+					"name": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg",
+					"value": "imagem_d"
+				}
+			]
+		},
+		{
+			"type": "picker",
+			"name": "name",
+			"items": [
+				{
+					"name": "item1",
+					"value": "value1"
+				},
+				{
+					"name": "item2",
+					"value": "value2"
+				},
+				{
+					"name": "item3",
+					"value": "value3"
+				}
+			]
+		},
+		{
+			"type": "radio",
+			"name": "name",
+			"items": [
+				{
+					"name": "item1",
+					"value": "value1"
+				},
+				{
+					"name": "item2",
+					"value": "value2"
+				},
+				{
+					"name": "item3",
+					"value": "value3"
+				}
+			]
+		},
+		{
 			"type": "boolean",
 			"name": "name"
+		},
+		{
+			"type": "range",
+			"name": "name",
+			"min": 0,
+			"max": 200
 		},
 		{
 			"type": "checkbox",
