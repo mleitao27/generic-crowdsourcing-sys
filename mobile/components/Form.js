@@ -8,7 +8,7 @@ import DropdownElement from './elements/DropdownElement';
 import RadioElement from './elements/RadioElement';
 import RangeElement from "./elements/RangeElement";
 import ImagePickerElement from "./elements/ImagePickerElement";
-import DateElement from "./elements/DateElement";
+import DateTimePickerElement from "./elements/DateTimePickerElement";
 
 const Form = props => {
 
@@ -34,7 +34,8 @@ const Form = props => {
         else if (e.type === 'radio') form.push(<RadioElement key={index} onChange={onChange} index={index} items={e.items} />);
         else if (e.type === 'range') form.push(<RangeElement key={index} onChange={onChange} index={index} min={e.min} max={e.max} />);
         else if (e.type === 'imagepicker') form.push(<ImagePickerElement key={index} onChange={onChange} index={index} items={e.items} />);
-        else if (e.type === 'date') form.push(<DateElement key={index} onChange={onChange} index={index} />);
+        else if (e.type === 'datepicker') form.push(<DateTimePickerElement key={index} onChange={onChange} index={index} mode={'date'}/>);
+        else if (e.type === 'timepicker') form.push(<DateTimePickerElement key={index} onChange={onChange} index={index} mode={'time'}/>);
 
         props.extension.map(ext => {
             if (e.type === ext.type) form.push(<ext.component key={index}/>);
