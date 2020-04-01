@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { View, Button } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const DateTimePickerElement = props => {
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
+  const [selectedDateTime, setSelectedDatetime] = useState('');
 
   const onChange = (event, selectedDateTime) => {
     var data = '';
@@ -17,6 +19,7 @@ const DateTimePickerElement = props => {
     else if (props.mode === 'time')
       data = `${selectedDateTime.getHours()}:${selectedDateTime.getMinutes()}:${selectedDateTime.getSeconds()}`;
 
+    setSelectedDatetime(data);
     props.onChange(props.index, data);
   };
 
@@ -31,8 +34,12 @@ const DateTimePickerElement = props => {
 
   return (
     <View>
-      <View>
-        <Button onPress={showDateTimepicker.bind(this, props.mode)} title={`Show ${props.mode} picker!`} />
+      <Text>{props.title}</Text>
+      <View style={{flexDirection: 'row', alignItems:'center', justifyContent:'space-between'}}>
+        <Text>{selectedDateTime}</Text>
+        <TouchableOpacity onPress={showDateTimepicker.bind(this, props.mode)}>
+          <Icon name={props.mode === 'date' ? 'ios-calendar' : 'md-time'} size={22}/>
+        </TouchableOpacity>
       </View>
       {show && (
         <DateTimePicker
