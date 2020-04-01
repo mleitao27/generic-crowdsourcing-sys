@@ -11,8 +11,8 @@ const DateElement = props => {
     props.onChange(props.index, "");
   }, []);
 
-    const inputHandler = enteredValue => {
-        props.onChange(props.index, enteredValue.nativeEvent.timestamp);
+  const inputHandler = enteredValue => {
+    props.onChange(props.index, String(new Date(enteredValue.nativeEvent.timestamp)));
     };
 
     const onChange = (event, selectedDate) => {
@@ -27,14 +27,18 @@ const DateElement = props => {
     const showDatepicker = () => {
         showMode("date");
     };
-
+    const showTimepicker = () => {
+      showMode("time");
+    };
     return (
       <View>
         <Button onPress={showDatepicker} title="Show date picker!" />
+        <Button onPress={showTimepicker} title="Show time picker!" />
         <DateTimePicker
           testID="dateTimePicker"
           timeZoneOffsetInMinutes={0}
           value={value}
+          mode={mode}
           is24Hour={true}
           display="default"
           onChange={inputHandler}
