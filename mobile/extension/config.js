@@ -9,7 +9,7 @@ const config = {
             appId: "534270243959641"
         }
     },
-    serverURL: 'http://192.168.43.100:3000'
+    serverURL: 'http://192.168.1.100:3000'
 };
 
 export default config;

@@ -13,17 +13,24 @@ const CheckboxElement = props => {
         for (var i = 0; i < props.items.length; i++) {
             auxOptions[i] = false;
         }
-        props.onChange(props.index, auxOptions);
+        props.onChange(props.index, []);
         setOptions(auxOptions);
     }, []);
 
     const form = [];
 
     const onChange = index => {
+        var data = [];
+
         auxOptions = options;
         auxOptions[index] = !auxOptions[index];
+
+        auxOptions.map((option, index) => {
+            if (option) data.push(props.items[index].value);
+        });
+
         setOptions(auxOptions);
-        props.onChange(props.index, auxOptions);
+        props.onChange(props.index, data);
         setDummyState(!dummyState);
     };
 
