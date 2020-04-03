@@ -6,12 +6,12 @@ const RadioElement = props => {
     const [value, setValue] = useState(false);
 
     useEffect(() => {
-        props.onChange(props.index, "");
+        props.onChange(props.pageIndex, props.index, "");
     }, []);
 
     const radioHandler = enteredValue => {
         setValue(enteredValue);
-        props.onChange(props.index, enteredValue);
+        props.onChange(props.pageIndex, props.index, enteredValue);
     };
 
     return (
@@ -22,10 +22,10 @@ const RadioElement = props => {
                     <View key={index} style={{flexDirection: 'row', alignItems:'center'}} >
                         <TouchableOpacity
                             style={styles.circle}
-                            onPress={() => radioHandler(item.value)}>
-                            {value === item.value && (<View style={styles.checkedCircle} />)}
+                            onPress={() => radioHandler(item)}>
+                            {value === item && (<View style={styles.checkedCircle} />)}
                         </TouchableOpacity>
-                        <Text> {item.name}</Text>
+                        <Text> {item}</Text>
                     </View>
                 );
             })}

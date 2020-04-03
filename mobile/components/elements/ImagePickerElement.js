@@ -5,12 +5,12 @@ const ImagePickerElement = props => {
     const [value, setValue] = useState(false);
 
     useEffect(() => {
-      props.onChange(props.index, "");
+      props.onChange(props.pageIndex, props.index, "");
     }, []);
 
     const imageHandler = enteredValue => {
       setValue(enteredValue);
-      props.onChange(props.index, enteredValue);
+      props.onChange(props.pageIndex, props.index, enteredValue);
     };
 
     return (
@@ -18,8 +18,8 @@ const ImagePickerElement = props => {
         {props.items.map((item, index) => {
             return (
               <View key={index}>
-                <TouchableOpacity onPress={() => imageHandler(item.name)}>
-                  <Image style={value === item.name ? styles.imageSelect : styles.image  } source={{ uri: item.url }}/>
+                <TouchableOpacity onPress={() => imageHandler(item.value)}>
+                  <Image style={value === item.value ? styles.imageSelect : styles.image  } source={{ uri: item.imageLink }}/>
                 </TouchableOpacity>
               </View>
             );

@@ -6,12 +6,12 @@ const TextElement = props => {
     const [value, setValue] = useState('');
 
     useEffect(() => {
-        props.onChange(props.index, '');
+        props.onChange(props.pageIndex, props.index, '');
     }, []);
 
     const inputHandler = enteredValue => {
         setValue(enteredValue);
-        props.onChange(props.index, enteredValue);
+        props.onChange(props.pageIndex, props.index, enteredValue);
     };
 
     return (

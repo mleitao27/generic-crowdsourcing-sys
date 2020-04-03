@@ -6,12 +6,12 @@ const DropdownElement = props => {
     const [value, setValue] = useState(false);
 
     useEffect(() => {
-        props.onChange(props.index, "");
+        props.onChange(props.pageIndex, props.index, "");
     }, []);
 
     const pickerHandler = enteredValue => {
         setValue(enteredValue);
-        props.onChange(props.index, enteredValue);
+        props.onChange(props.pageIndex, props.index, enteredValue);
     };
 
     return (
@@ -22,7 +22,7 @@ const DropdownElement = props => {
                 selectedValue={value}
                 onValueChange={pickerHandler}>
                 {props.items.map((item, index) => {
-                    return (<Picker.Item label={item.name} value={item.value} key={index} />)
+                    return (<Picker.Item label={item} value={item} key={index} />)
                 })}
             </Picker>
         </View>
