@@ -6,12 +6,12 @@ const BooleanElement = props => {
     const [state, setState] = useState(false);
 
     useEffect(() => {
-        props.onChange(props.index, false);
+        props.onChange(props.pageIndex, props.index, false);
     }, []);
 
     const toggleSwitch = newState => {
         setState(!state);
-        props.onChange(props.index, !state);
+        props.onChange(props.pageIndex, props.index, !state);
     };
 
     return (

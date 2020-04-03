@@ -9,6 +9,10 @@ const DateTimePickerElement = props => {
   const [show, setShow] = useState(false);
   const [selectedDateTime, setSelectedDatetime] = useState('');
 
+  useEffect(() => {
+    props.onChange(props.pageIndex, props.index, '');
+  });
+
   const onChange = (event, selectedDateTime) => {
     var data = '';
     const currentDate = selectedDateTime || date;
@@ -20,7 +24,7 @@ const DateTimePickerElement = props => {
       data = `${selectedDateTime.getHours()}:${selectedDateTime.getMinutes()}:${selectedDateTime.getSeconds()}`;
 
     setSelectedDatetime(data);
-    props.onChange(props.index, data);
+    props.onChange(props.pageIndex, props.index, data);
   };
 
   const showMode = currentMode => {

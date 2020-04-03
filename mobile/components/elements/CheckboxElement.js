@@ -13,7 +13,7 @@ const CheckboxElement = props => {
         for (var i = 0; i < props.items.length; i++) {
             auxOptions[i] = false;
         }
-        props.onChange(props.index, []);
+        props.onChange(props.pageIndex, props.index, []);
         setOptions(auxOptions);
     }, []);
 
@@ -26,11 +26,11 @@ const CheckboxElement = props => {
         auxOptions[index] = !auxOptions[index];
 
         auxOptions.map((option, index) => {
-            if (option) data.push(props.items[index].value);
+            if (option) data.push(props.items[index]);
         });
 
         setOptions(auxOptions);
-        props.onChange(props.index, data);
+        props.onChange(props.pageIndex, props.index, data);
         setDummyState(!dummyState);
     };
 
@@ -38,7 +38,7 @@ const CheckboxElement = props => {
         form.push(
             <TouchableOpacity key={index} style={{flexDirection: 'row', alignItems: 'center'}} onPress={onChange.bind(this, index)}>
                 <Icon name={options[index] ? 'ios-checkmark-circle' : 'ios-checkmark-circle-outline'} size={22}/>
-                <Text> {i.name}</Text>
+                <Text> {i}</Text>
             </TouchableOpacity>
         );
     });

@@ -5,12 +5,12 @@ const RangeElement = props => {
   const [value, setValue] = useState(false);
 
   useEffect(() => {
-    props.onChange(props.index, "");
+    props.onChange(props.pageIndex, props.index, "");
   }, []);
 
   const pickerHandler = enteredValue => {
     setValue(enteredValue);
-    props.onChange(props.index, enteredValue);
+    props.onChange(props.pageIndex, props.index, enteredValue);
   };
 
   return (
