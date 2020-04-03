@@ -1,12 +1,14 @@
 import React from 'react';
+
 import { View, Text } from 'react-native';
 
-const ImageElement = props => {
+const FileElement = props => {
+
     return (
         <View>
-            <Text>ImageElement</Text>
+            <Text>FileElement still under construction...</Text>
         </View>
     );
 };
 
-export default ImageElement;
+export default FileElement;
