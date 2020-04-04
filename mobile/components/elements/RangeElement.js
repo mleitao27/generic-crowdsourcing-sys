@@ -12,6 +12,7 @@ const RangeElement = props => {
     setValue(enteredValue);
     props.onChange(props.pageIndex, props.index, enteredValue);
   };
+  const step = props.step || 1;
 
   return (
     <View>
@@ -20,7 +21,7 @@ const RangeElement = props => {
         style={{ width: '100%', height: 40 }}
         minimumValue={props.min}
         maximumValue={props.max}
-        step={1}
+        step={step}
         minimumTrackTintColor="#333"
         maximumTrackTintColor="#333"
         onValueChange={pickerHandler}
