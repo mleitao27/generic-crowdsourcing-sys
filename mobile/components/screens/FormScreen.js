@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import globalStyles from '../../constants/globalStyles';
 import Colors from '../../constants/colors';
-import data from '../../data/form.json';
+import data from '../../data/surveyjs.json';
 
 import CustomButton from '../CustomButton';
 import Form from '../Form';

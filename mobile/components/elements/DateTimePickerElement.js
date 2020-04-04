@@ -11,7 +11,7 @@ const DateTimePickerElement = props => {
 
   useEffect(() => {
     props.onChange(props.pageIndex, props.index, '');
-  });
+  }, []);
 
   const onChange = (event, selectedDateTime) => {
     var data = '';
