@@ -236,6 +236,7 @@ const Form = props => {
                         title={e.name}
                         min={e.min}
                         max={e.max} 
+                        step={e.step} 
                     />
                 );
             else if (e.type === 'rating') 
