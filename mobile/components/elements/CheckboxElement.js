@@ -1,54 +1,90 @@
+// Imports
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-
+import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 
+import Colors from '../constants/colors';
+
+// Checkbox list that allows selection of multiple options
 const CheckboxElement = props => {
 
+    // Variable used to update option's state
     let auxOptions = [];
+    // State that stores the state of each option
     const [options, setOptions] = useState([]);
+    // Dummy state used to force render
     const [dummyState, setDummyState] = useState(false);
+    // Var that will contain the list of options to display
+    const form = [];
 
+    // Initially sets all options to false and sends an empty array as answer data
     useEffect(() => {
-        for (var i = 0; i < props.items.length; i++) {
+        for (var i = 0; i < props.items.length; i++)
             auxOptions[i] = false;
-        }
+
+        // Send data through the onChange prop
         props.onChange(props.pageIndex, props.index, []);
+        // Update options state
         setOptions(auxOptions);
     }, []);
 
-    const form = [];
-
+    // Called everytime an options is pressed 
     const onChange = index => {
+        // Array to save as answer data
         var data = [];
 
+        // Fetch options from the state
         auxOptions = options;
+        // Change pressed option
         auxOptions[index] = !auxOptions[index];
 
+        // Adds true options (checked) to the answer array
         auxOptions.map((option, index) => {
             if (option) data.push(props.items[index]);
         });
 
+        // Saves new state
         setOptions(auxOptions);
+        // Sends answer data to the form component (parent)
         props.onChange(props.pageIndex, props.index, data);
+        // Forces render
         setDummyState(!dummyState);
     };
 
+    // Iterates through the options list received as prop
     props.items.map((i, index) => {
+        // Adds element, selected or not depending on the state
         form.push(
-            <TouchableOpacity key={index} style={{flexDirection: 'row', alignItems: 'center'}} onPress={onChange.bind(this, index)}>
-                <Icon name={options[index] ? 'ios-checkmark-circle' : 'ios-checkmark-circle-outline'} size={22}/>
-                <Text> {i}</Text>
+            <TouchableOpacity key={index} style={styles.item} onPress={onChange.bind(this, index)}>
+                <Icon name={options[index] ? 'ios-checkbox' : 'ios-checkbox-outline'} size={24} color={Colors.primary}/>
+                <Text style={styles.options}> {i}</Text>
             </TouchableOpacity>
         );
     });
 
     return (
-        <View>
-            <Text>{props.title}</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>{props.title}</Text>
             {form}
         </View>
     );
 };
+
+// Styles
+const styles = StyleSheet.create({
+    container: {
+        paddingVertical: Dimensions.get('window').height * 0.05
+    },
+    item: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    title: {
+        fontSize: 18
+    },
+    options: {
+        fontSize: 16
+    }
+});
 
 export default CheckboxElement;
