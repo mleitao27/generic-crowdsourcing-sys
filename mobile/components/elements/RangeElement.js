@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useEffect } from "react";
 import { Slider, View, Text, StyleSheet, Dimensions } from "react-native";
 
@@ -9,7 +10,7 @@ const RangeElement = props => {
 
   // State that stores input text
   useEffect(() => {
-    props.onChange(props.pageIndex, props.index, "");
+    props.onChange(props.pageIndex, props.index, props.min);
   }, []);
 
   // On first render send default value in answer data in the form component
@@ -22,7 +23,7 @@ const RangeElement = props => {
   const step = props.step || 1;
 
   return (
-    <View>
+    <View styel={styles.container}>
       <Text style={styles.title}>{props.title}</Text>
       <Text style={styles.value}>{String(value)}</Text>
       <Slider
@@ -30,8 +31,8 @@ const RangeElement = props => {
         minimumValue={props.min}
         maximumValue={props.max}
         step={step}
-        minimumTrackTintColor= {Colors.secondary}
-        maximumTrackTintColor={Colors.secondary}
+        minimumTrackTintColor={Colors.primary}
+        maximumTrackTintColor={Colors.primary}
         onValueChange={pickerHandler}
         thumbTintColor={"white"}
       />
@@ -41,18 +42,21 @@ const RangeElement = props => {
 
 // Styles
 const styles = StyleSheet.create({
+  container: {
+    paddingVertical: Dimensions.get('window').height * 0.05
+  },
   title: {
     fontSize: 18,
     marginBottom: Dimensions.get("window").height * 0.02,
   },
   slider: {
     shadowColor: "black",
-    width: '100%', 
+    width: '100%',
   },
   value: {
-    textAlign:"right",
+    textAlign: "right",
     fontSize: 15,
-    color: Colors.secondary
+    color: Colors.primary
   }
 });
 
