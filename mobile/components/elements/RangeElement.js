@@ -1,21 +1,31 @@
 // Imports
 import React, { useState, useEffect } from "react";
-import { Slider, View, Text, StyleSheet, Dimensions } from "react-native";
+import {
+  Slider,
+  View,
+  Text,
+  StyleSheet,
+  Dimensions
+} from "react-native";
 
 import Colors from "../../constants/colors";
 
 // Range inserted by user built with react native Slider component
 const RangeElement = props => {
-  const [value, setValue] = useState(0);
 
   // State that stores input text
+  const [value, setValue] = useState(props.min);
+
+  // On first render send default value in answer data in the form component
   useEffect(() => {
     props.onChange(props.pageIndex, props.index, props.min);
   }, []);
 
-  // On first render send default value in answer data in the form component
-  const pickerHandler = enteredValue => {
+  // When user changes slider value
+  const sliderHandler = enteredValue => {
+    // Updates value of state
     setValue(enteredValue);
+    // Sends answer value to form
     props.onChange(props.pageIndex, props.index, enteredValue);
   };
 
@@ -33,7 +43,7 @@ const RangeElement = props => {
         step={step}
         minimumTrackTintColor={Colors.primary}
         maximumTrackTintColor={Colors.primary}
-        onValueChange={pickerHandler}
+        onValueChange={sliderHandler}
         thumbTintColor={"white"}
       />
     </View>

@@ -1,6 +1,12 @@
 // Imports
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    TouchableOpacity
+} from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons";
 

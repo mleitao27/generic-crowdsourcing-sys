@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, View, Text, StyleSheet, Dimensions } from "react-native";
+import {
+  TextInput, 
+  View, 
+  Text, 
+  StyleSheet,
+  Dimensions
+} from "react-native";
 
 import Colors from "../../constants/colors";
 
