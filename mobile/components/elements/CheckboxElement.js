@@ -1,7 +1,13 @@
 // Imports
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
+import {
+    Text,
+    View,
+    TouchableOpacity,
+    StyleSheet,
+    Dimensions
+} from 'react-native';
 
 import Colors from '../constants/colors';
 
@@ -56,7 +62,7 @@ const CheckboxElement = props => {
         // Adds element, selected or not depending on the state
         form.push(
             <TouchableOpacity key={index} style={styles.item} onPress={onChange.bind(this, index)}>
-                <Icon name={options[index] ? 'ios-checkbox' : 'ios-checkbox-outline'} size={24} color={Colors.primary}/>
+                <Icon name={options[index] ? 'ios-checkbox' : 'ios-checkbox-outline'} size={24} color={Colors.primary} />
                 <Text style={styles.options}> {i}</Text>
             </TouchableOpacity>
         );
@@ -80,7 +86,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        fontSize: 18
+        fontSize: 18,
+        marginBottom: Dimensions.get('window').height * 0.02
     },
     options: {
         fontSize: 16

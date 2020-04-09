@@ -1,6 +1,12 @@
 // Imports
 import React, { useState, useEffect } from 'react';
-import { Switch, View, Text, StyleSheet, Dimensions } from 'react-native';
+import {
+    Switch,
+    View,
+    Text,
+    StyleSheet,
+    Dimensions
+} from 'react-native';
 
 import Colors from '../constants/colors';
 
@@ -25,11 +31,11 @@ const BooleanElement = props => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{props.title}</Text>
-            <Switch 
+            <Switch
                 onValueChange={toggleSwitch}
                 value={state}
                 thumbColor={state ? Colors.primary : 'white'}
-                trackColor={{false: Colors.secondary, true: Colors.secondary}}
+                trackColor={{ false: Colors.secondary, true: Colors.secondary }}
             />
         </View>
     );
