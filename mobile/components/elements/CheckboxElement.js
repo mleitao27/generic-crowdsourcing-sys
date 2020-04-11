@@ -17,7 +17,12 @@ const CheckboxElement = props => {
     // Variable used to update option's state
     let auxOptions = [];
     // State that stores the state of each option
-    const [options, setOptions] = useState([]);
+    const [options, setOptions] = useState(() => {
+        for (var i = 0; i < props.items.length; i++) {
+            auxOptions[i] = false;
+            return auxOptions;
+        }
+    });
     // Dummy state used to force render
     const [dummyState, setDummyState] = useState(false);
     // Var that will contain the list of options to display
@@ -25,13 +30,8 @@ const CheckboxElement = props => {
 
     // Initially sets all options to false and sends an empty array as answer data
     useEffect(() => {
-        for (var i = 0; i < props.items.length; i++)
-            auxOptions[i] = false;
-
         // Send data through the onChange prop
-        props.onChange(props.pageIndex, props.index, []);
-        // Update options state
-        setOptions(auxOptions);
+        props.onChange(props.pageIndex, props.index, options);
     }, []);
 
     // Called everytime an options is pressed 
