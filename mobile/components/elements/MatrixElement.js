@@ -9,31 +9,29 @@ const MatrixElement = props => {
     // Variable used to update option's state
     let auxOptions = [];
     // State that stores the state of each option
-    const [options, setOptions] = useState([]);
+    const [options, setOptions] = useState(() => {
+        for (var i = 0; i < props.rows.length; i++)
+            auxOptions[i] = {row: props.rows[i], column: ''};
+            return auxOptions;
+    });
     
     // Dummy state used to force render
     const [dummyState, setDummyState] = useState(false);
 
-
     // Initially sets all options to false and sends an empty array as answer data
     useEffect(() => {
-        for (var i = 0; i < props.rows.length; i++)
-            auxOptions[i] = "";;
-
         // Send data through the onChange prop
-        props.onChange(props.pageIndex, props.index, []);
-        // Update options state
-        setOptions(auxOptions);
+        props.onChange(props.pageIndex, props.index, options);
     }, []);
 
 
     // When radio input is inserted, state is changed and it updates answer data
-    const matrixHandler = (index, enteredText )  => {
+    const matrixHandler = (index, column)  => {
         // Fetch options from the state
         auxOptions = options;
 
         // Change text input item 
-        auxOptions[index] = enteredText;
+        auxOptions[index].column = column;
 
         // Saves new state
         setOptions(auxOptions);
@@ -44,11 +42,6 @@ const MatrixElement = props => {
         // Forces render
         setDummyState(!dummyState);
     };
-    const aux = (index,collumn) => {
-        console.log(options[index]);
-        if(options[index] === collumn) return true
-        else return false
-    }
 
     return (
         <View>
@@ -63,13 +56,13 @@ const MatrixElement = props => {
             {props.rows.map((row, indexr) => {
             return (
             <View key={indexr} style={{flexDirection:"row"}}>
-                <Text> {row}</Text>
+                <Text>{row}</Text>
                 <View key={indexr} style={styles.container2}>
                     {props.columns.map((column, indexc) => {
                         return (
                         <View key={indexc} >
                             <TouchableOpacity onPress={matrixHandler.bind(this, indexr , column)}>
-                                <Icon name={options[indexr] === column ? "ios-radio-button-on":"ios-radio-button-off" } size={24} color={Colors.primary} />
+                                <Icon name={options[indexr].column === column ? "ios-radio-button-on":"ios-radio-button-off" } size={24} color={Colors.primary} />
                             </TouchableOpacity>
                         </View>                   
                         );

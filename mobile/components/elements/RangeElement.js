@@ -44,7 +44,7 @@ const RangeElement = props => {
         minimumTrackTintColor={Colors.primary}
         maximumTrackTintColor={Colors.primary}
         onValueChange={sliderHandler}
-        thumbTintColor={"white"}
+        thumbTintColor={Colors.primary}
       />
     </View>
   );
