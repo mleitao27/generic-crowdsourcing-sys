@@ -9,18 +9,22 @@ const MultipleTextElement = props => {
     // Variable used to update option's state
     let auxOptions = [];
     // State that stores the state of each option
-    const [options, setOptions] = useState([]);
+    const [options, setOptions] = useState(()=>{
+      for (var i = 0; i < props.items.length; i++)
+        auxOptions[i] = {name: props.items[i].name, value: ""};
+        return auxOptions;
+    });
+
+    // Dummy state used to force render
+    const [dummyState, setDummyState] = useState(false);
 
 
     // Initially sets all options to false and sends an empty array as answer data
     useEffect(() => {
-        for (var i = 0; i < props.items.length; i++)
-            auxOptions[i] = {name: "", value: ""};;
 
         // Send data through the onChange prop
         props.onChange(props.pageIndex, props.index, []);
-        // Update options state
-        setOptions(auxOptions);
+
     }, []);
 
     // Called everytime user inserts text
@@ -30,13 +34,15 @@ const MultipleTextElement = props => {
         auxOptions = options;
 
         // Change text input item 
-        auxOptions[index] = {name: itemname, value: enteredText};
+        auxOptions[index] = {name:itemname, value: enteredText};
 
         // Saves new state
         setOptions(auxOptions);
 
         // Sends answer data to the form component (parent)
         props.onChange(props.pageIndex, props.index, auxOptions);
+        // Forces render
+        setDummyState(!dummyState);
 
     };
  
@@ -53,7 +59,7 @@ const MultipleTextElement = props => {
                     multiline={true}      // Allows to wrap content in multiple lines
                     numberOfLines={4}     // Max Number of Lines Displayed, depending on the style given  
                     onChangeText={onChange.bind(this, index, item.name)}
-                    value={options[index]}
+                    value={options[index].value}
                     maxLength={260}       // Limit of characters, better solution then JS logic
                 />
             </View>
