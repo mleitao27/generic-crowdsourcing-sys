@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 
 import Icon from "react-native-vector-icons/Ionicons";
 
 const MatrixElement = props => {
 
-    
+
     // Variable used to update option's state
     let auxOptions = [];
     // State that stores the state of each option
     const [options, setOptions] = useState(() => {
         for (var i = 0; i < props.rows.length; i++)
-            auxOptions[i] = {row: props.rows[i], column: ''};
-            return auxOptions;
+            auxOptions[i] = { row: props.rows[i], column: '' };
+        return auxOptions;
     });
-    
+
     // Dummy state used to force render
     const [dummyState, setDummyState] = useState(false);
 
@@ -26,7 +26,7 @@ const MatrixElement = props => {
 
 
     // When radio input is inserted, state is changed and it updates answer data
-    const matrixHandler = (index, column)  => {
+    const matrixHandler = (index, column) => {
         // Fetch options from the state
         auxOptions = options;
 
@@ -35,10 +35,10 @@ const MatrixElement = props => {
 
         // Saves new state
         setOptions(auxOptions);
-        
+
         // Sends answer data to the form component (parent)
         props.onChange(props.pageIndex, props.index, auxOptions);
-        
+
         // Forces render
         setDummyState(!dummyState);
     };
@@ -47,30 +47,30 @@ const MatrixElement = props => {
         <View>
             <Text style={styles.title}>{props.title}</Text>
             <View style={styles.container1}>
-            {props.columns.map((column, indexc) => {
-                return (
-                    <Text key={indexc}>{column}</Text>               
-                );
-            })}
+                {props.columns.map((column, indexc) => {
+                    return (
+                        <Text key={indexc}>{column}</Text>
+                    );
+                })}
             </View>
             {props.rows.map((row, indexr) => {
-            return (
-            <View key={indexr} style={{flexDirection:"row"}}>
-                <Text>{row}</Text>
-                <View key={indexr} style={styles.container2}>
-                    {props.columns.map((column, indexc) => {
-                        return (
-                        <View key={indexc} >
-                            <TouchableOpacity onPress={matrixHandler.bind(this, indexr , column)}>
-                                <Icon name={options[indexr].column === column ? "ios-radio-button-on":"ios-radio-button-off" } size={24} color={Colors.primary} />
-                            </TouchableOpacity>
-                        </View>                   
-                        );
-                    })}
-                </View>
-            </View>
-            );
-        })}
+                return (
+                    <View key={indexr} style={{ flexDirection: "row" }}>
+                        <Text>{row}</Text>
+                        <View key={indexr} style={styles.container2}>
+                            {props.columns.map((column, indexc) => {
+                                return (
+                                    <View key={indexc} >
+                                        <TouchableOpacity onPress={matrixHandler.bind(this, indexr, column)}>
+                                            <Icon name={options[indexr].column === column ? "ios-radio-button-on" : "ios-radio-button-off"} size={24} color={Colors.primary} />
+                                        </TouchableOpacity>
+                                    </View>
+                                );
+                            })}
+                        </View>
+                    </View>
+                );
+            })}
         </View>
     );
 };
@@ -79,21 +79,21 @@ const MatrixElement = props => {
 // Styles
 const styles = StyleSheet.create({
     title: {
-      fontSize: 18,
-      marginBottom: Dimensions.get("window").height * 0.02,
+        fontSize: 18,
+        marginBottom: Dimensions.get("window").height * 0.02,
     },
     container1: {
-        flexDirection:"row",
+        flexDirection: "row",
         justifyContent: "space-between",
         marginLeft: Dimensions.get("window").width * 0.17
 
     },
     container2: {
-        flexDirection:"row",
+        flexDirection: "row",
         justifyContent: "space-between",
         marginLeft: Dimensions.get("window").width * 0.10,
         width: Dimensions.get("window").width * 0.65
     },
-  });
+});
 
 export default MatrixElement;
