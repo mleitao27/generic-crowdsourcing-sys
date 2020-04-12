@@ -71,6 +71,7 @@ const MatrixDropdownElement = props => {
                                 mode="dialog"
                                 selectedValue={options[indexr][indexc].value}
                                 onValueChange={matrixHandler.bind(this, indexr, indexc, row, column )}>
+                                <Picker.Item label={'-'} value={''} />
                                 {props.choices.map((choice, index) => {
                                     return (<Picker.Item label={String(choice)} value={choice} key={index} />)
                                 })}
