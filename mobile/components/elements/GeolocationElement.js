@@ -18,12 +18,16 @@ const GeolocationElement = props => {
     // Get geolocation when component is used
     useEffect(() => {
         (async () => {
-            // get location
-            await getLocationAsync();
-            // Send location data(geocode + lat + long) to form component
-            props.onChange(props.pageIndex, props.index, { ...geocode[0], ...location });
+            // Only gets location once
+            if (location === null)
+                // Get location
+                await getLocationAsync();
+            // Only sends answer if there is data to send
+            if (geocode !== null)
+                // Send location data(geocode + lat + long) to form component
+                props.onChange(props.pageIndex, props.index, { ...geocode[0], ...location });
         })();
-    }, []);
+    }, [location, geocode]);
 
     // Get geolocation
     getLocationAsync = async () => {
@@ -36,7 +40,7 @@ const GeolocationElement = props => {
         // Gets coordinates
         let location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest });
         const { latitude, longitude } = location.coords;
-        getGeocodeAsync({ latitude, longitude });
+        await getGeocodeAsync({ latitude, longitude });
         setLocation({ latitude, longitude });
     };
 
