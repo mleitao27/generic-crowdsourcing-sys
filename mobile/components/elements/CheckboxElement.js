@@ -31,7 +31,7 @@ const CheckboxElement = props => {
     // Initially sets all options to false and sends an empty array as answer data
     useEffect(() => {
         // Send data through the onChange prop
-        props.onChange(props.pageIndex, props.index, options);
+        props.onChange(props.pageIndex, props.index, '');
     }, []);
 
     // Called everytime an options is pressed 
