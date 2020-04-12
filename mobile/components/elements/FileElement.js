@@ -18,7 +18,6 @@ const FileElement = props => {
 
     const chooseFile = async () => {
         const file = await DocumentPicker.getDocumentAsync();
-        console.log(file);
         setFileName(file.name);
         // Check size
         const options = { encoding: FileSystem.EncodingType.Base64 };
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         flex: 1,
-        padding: Dimensions.get('window').width * 0.02
+        paddingHorizontal: Dimensions.get('window').width * 0.02
     },
     button: {
         borderColor: Colors.primary,
@@ -66,6 +65,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary
     },
     buttonText: {
+        fontSize: 16,
         color: Colors.secondary
     }
 });

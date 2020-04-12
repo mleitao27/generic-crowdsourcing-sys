@@ -16,7 +16,7 @@ const HtmlElement = props => {
         <View style={styles.container}>
             <Text style={styles.title}>{props.title}</Text>
             <View style={styles.expressionContainer}>
-                <Text style={styles.text}>{props.html}</Text>
+                <Text style={styles.text}>Change this to input</Text>
             </View>
         </View>
     );
