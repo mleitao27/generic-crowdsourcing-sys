@@ -47,20 +47,19 @@ const MultipleTextElement = props => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>{props.title}</Text>
       {props.items.map((item, index) => {
         return (
-          <View key={index} style={styles.radioContainer} >
-            <Text> {item.name}</Text>
+          <View key={index} style={styles.content} >
+            <Text style={styles.text}>{item.name}</Text>
             <TextInput
               style={styles.input}
               placeholder={"Type anything..."}
-              multiline={true}      // Allows to wrap content in multiple lines
-              numberOfLines={4}     // Max Number of Lines Displayed, depending on the style given  
+              multiline={false}      // Allows to wrap content in multiple lines 
               onChangeText={onChange.bind(this, index, item.name)}
               value={options[index].value}
-              maxLength={260}       // Limit of characters, better solution then JS logic
+              maxLength={40}    // Limit of characters, better solution then JS logic
             />
           </View>
         );
@@ -71,17 +70,29 @@ const MultipleTextElement = props => {
 
 // Styles
 const styles = StyleSheet.create({
+  container: {
+      paddingVertical: Dimensions.get('window').height * 0.05
+  },
   title: {
     fontSize: 18,
     marginBottom: Dimensions.get("window").height * 0.02,
   },
   input: {
-    height: 40,
+    backgroundColor: 'white',
+    textAlignVertical: 'top',
+    fontSize: 16,
+    paddingVertical: Dimensions.get('window').height * 0.01,
+    paddingHorizontal: Dimensions.get('window').width * 0.02,
     borderColor: Colors.secondary,
-    borderWidth: 1,
-    marginVertical: Dimensions.get("window").height * 0.01
-
+    borderWidth: 1
   },
+  text: {
+    fontSize: 16,
+    marginBottom: Dimensions.get("window").height * 0.01
+  },
+  content: {
+    paddingVertical: Dimensions.get('window').height * 0.01
+  }
 });
 
 
