@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button, ScrollView } from 'react-native';
+import { Button, View, Dimensions, StyleSheet } from 'react-native';
 
 import BooleanElement from './elements/BooleanElement';
+import CameraElement from './elements/CameraElement';
 import CheckboxElement from './elements/CheckboxElement';
 import CommentElement from './elements/CommentElement';
 import DateTimePickerElement from "./elements/DateTimePickerElement";
 import DropdownElement from './elements/DropdownElement';
 import ExpressionElement from './elements/ExpressionElement';
 import FileElement from './elements/FileElement';
+import GeolocationElement from './elements/GeolocationElement';
 import HtmlElement from './elements/HtmlElement';
 import ImageElement from './elements/ImageElement';
 import ImagePickerElement from "./elements/ImagePickerElement";
@@ -50,6 +52,16 @@ const Form = props => {
                         title={e.name} 
                     />
                 );
+            else if (e.type === 'camera') 
+                form.push(
+                    <CameraElement 
+                        key={index} 
+                        onChange={onChange} 
+                        index={index} 
+                        pageIndex={pageIndex}
+                        title={e.name}
+                    />
+                );
             else if (e.type === 'checkbox') 
                 form.push(
                     <CheckboxElement 
@@ -80,6 +92,7 @@ const Form = props => {
                         pageIndex={pageIndex}
                         title={e.name} 
                         mode={'date'}
+                        type={e.mode}
                     />
                 );
             else if (e.type === 'timepicker') 
@@ -91,6 +104,7 @@ const Form = props => {
                         pageIndex={pageIndex}
                         title={e.name} 
                         mode={'time'}
+                        type={e.mode}
                     />
                 );
             else if (e.type === 'dropdown') 
@@ -112,6 +126,7 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                        expression={e.commentText}
                     />
                 );
             else if (e.type === 'file') 
@@ -122,6 +137,15 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                    />
+                );
+            else if (e.type === 'geolocation') 
+                form.push(
+                    <GeolocationElement
+                        key={index}
+                        onChange={onChange}
+                        index={index}
+                        pageIndex={pageIndex}
                     />
                 );
             else if (e.type === 'html') 
@@ -163,6 +187,9 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                        rows={e.rows}
+                        columns={e.columns}
+                        choices={e.choices}
                     />
                 );
             else if (e.type === 'matrixdynamic') 
@@ -183,6 +210,8 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                        rows={e.rows}
+                        columns={e.columns}
                     />
                 );
             else if (e.type === 'multipletext') 
@@ -193,6 +222,7 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                        items={e.items}
                     />
                 );
             else if (e.type === 'paneldynamic') 
@@ -261,18 +291,33 @@ const Form = props => {
                 );
 
             props.extension.map(ext => {
-                if (e.type === ext.type) form.push(<ext.component key={index}/>);
+                if (e.type === ext.type)
+                    form.push(
+                        <ext.component
+                            key={index}
+                            onChange={onChange}
+                            index={index}
+                            pageIndex={pageIndex}
+                            props={ext}
+                        />
+                    );
             });
 
         });
     });
 
     return (
-        <ScrollView>
+        <View style={styles.container}>
             {form}
             <Button title='Submit' onPress={onSubmit}/>
-        </ScrollView>
+        </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        paddingHorizontal: Dimensions.get('window').width * 0.03
+    }
+});
 
 export default Form;
