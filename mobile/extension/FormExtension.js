@@ -1,9 +1,9 @@
-import ImageElement from './ImageElement';
+import GeolocationElement from './GeolocationElement';
 
 const ext = [
     {
-        type: 'image',
-        component: ImageElement
+        type: 'ext:geolocation',
+        component: GeolocationElement
     }
 ];
 

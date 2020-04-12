@@ -1,99 +1,88 @@
 {
-	"elements": [
+	"pages": [
 		{
-			"type": "text",
-			"name": "Text Title"
-		},
-		{
-			"type": "datepicker",
-			"name": "Datepicker Title"
-		},{
-			"type": "timepicker",
-			"name": "Timepicker Title"
-		},
-		{
-			"type": "imagepicker",
-			"name": "Imagepicker Title",
-			"items": [
+			"name": "page1",			
+			"elements": [
 				{
-					"name": "imagem_a",
-					"url": "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg"
+					"type": "text",
+					"name": "Text Title"
 				},
 				{
-					"name": "imagem_b",
-					"url": "https://i.pinimg.com/originals/67/ab/a1/67aba171f2f192fe07a351d784807749.jpg"
+					"type": "datepicker",
+					"name": "Datepicker Title",
+					"mode": "manual"
 				},
 				{
-					"name": "imagem_c",
-					"url": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg"
+					"type": "timepicker",
+					"name": "Timepicker Title",
+					"mode": "manual"
 				},
 				{
-					"name": "imagem_d",
-					"url": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg"
-				}
-			]
-		},
-		{
-			"type": "dropdown",
-			"name": "Dropdown Title",
-			"items": [
-				{
-					"name": "item1",
-					"value": "value1"
+					"type": "imagepicker",
+					"name": "Imagepicker Title",
+					"choices": [
+						{
+							"value": "imagem_a",
+							"imageLink": "https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg"
+						},
+						{
+							"value": "imagem_b",
+							"imageLink": "https://i.pinimg.com/originals/67/ab/a1/67aba171f2f192fe07a351d784807749.jpg"
+						},
+						{
+							"value": "imagem_c",
+							"imageLink": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg"
+						},
+						{
+							"value": "imagem_d",
+							"imageLink": "https://i.pinimg.com/originals/9e/87/dd/9e87dda09ee6d3d40024b61123abe64d.jpg"
+						}
+					]
 				},
 				{
-					"name": "item2",
-					"value": "value2"
+					"type": "dropdown",
+					"name": "Dropdown Title",
+					"choices": [
+						"item1",
+						"item2",
+						"item3"
+					]
 				},
 				{
-					"name": "item3",
-					"value": "value3"
-				}
-			]
-		},
-		{
-			"type": "radio",
-			"name": "Radion Title",
-			"items": [
-				{
-					"name": "item1",
-					"value": "value1"
+					"type": "radiogroup",
+					"name": "Radio Title",
+					"choices": [
+						"item1",
+						"item2",
+						"item3"
+					]
 				},
 				{
-					"name": "item2",
-					"value": "value2"
+					"type": "boolean",
+					"name": "Boolean Title"
 				},
 				{
-					"name": "item3",
-					"value": "value3"
-				}
-			]
-		},
-		{
-			"type": "boolean",
-			"name": "Boolean Title"
-		},
-		{
-			"type": "range",
-			"name": "Range Title",
-			"min": 0,
-			"max": 200
-		},
-		{
-			"type": "checkbox",
-			"name": "Checkbox Title",
-			"items": [
-				{
-					"name":"item1",
-					"value": "value1"
+					"type": "range",
+					"name": "Range Title",
+					"min": 0,
+					"max": 200
 				},
 				{
-					"name":"item2",
-					"value": "value2"
+					"type": "checkbox",
+					"name": "Checkbox Title",
+					"choices": [
+						"item1",
+						"item2",
+						"item3"
+					]
 				},
 				{
-					"name":"item3",
-					"value": "value3"
+					"type": "camera",
+					"name": "Camera Title"
+				},
+				{
+					"type": "geolocation",
+					"name": "Geolocation Title"
 				}
 			]
 		}
