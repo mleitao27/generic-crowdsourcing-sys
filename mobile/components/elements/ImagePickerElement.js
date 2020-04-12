@@ -1,25 +1,59 @@
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Image , StyleSheet } from "react-native";
 
+// Image Picker by  user built with react native TouchableOpacity and Image component
 const ImagePickerElement = props => {
-    const [value, setValue] = useState(false);
 
-    useEffect(() => {
-      props.onChange(props.pageIndex, props.index, "");
-    }, []);
+   // Variable used to update option's state
+   let auxOptions = [];
+   // State that stores the state of each option
+   const [options, setOptions] = useState([]);
+   // Dummy state used to force render
+   const [dummyState, setDummyState] = useState(false);
+  
 
-    const imageHandler = enteredValue => {
-      setValue(enteredValue);
-      props.onChange(props.pageIndex, props.index, enteredValue);
-    };
+   // Initially sets all options to false and sends an empty array as answer data
+   useEffect(() => {
+       for (var i = 0; i < props.items.length; i++)
+           auxOptions[i] = false;
+       // Send data through the onChange prop
+       props.onChange(props.pageIndex, props.index, []);
+       // Update options state
+       setOptions(auxOptions);
+   }, []);
+
+   // Called everytime an image is pressed 
+   const onChange = index => {
+
+       // Array to save as answer data
+       var data = [];
+
+       // Fetch options from the state
+       auxOptions = options;
+       // Change pressed option
+       auxOptions[index] = !auxOptions[index];
+
+       // Adds true options (checked) to the answer array
+       auxOptions.map((option, index) => {
+           if (option) data.push(props.items[index].value);
+       });
+
+       // Saves new state
+       setOptions(auxOptions);
+       // Sends answer data to the form component (parent)
+       props.onChange(props.pageIndex, props.index, data);
+       // Forces render
+       setDummyState(!dummyState);
+   };
+
 
     return (
     <View style={styles.container} >
         {props.items.map((item, index) => {
             return (
               <View key={index}>
-                <TouchableOpacity onPress={() => imageHandler(item.value)}>
-                  <Image style={value === item.value ? styles.imageSelect : styles.image  } source={{ uri: item.imageLink }}/>
+                <TouchableOpacity onPress={onChange.bind(this, index)}>
+                  <Image style={options[index] ? styles.imageSelect : styles.image  } source={{ uri: item.imageLink }}/>
                 </TouchableOpacity>
               </View>
             );
@@ -28,6 +62,7 @@ const ImagePickerElement = props => {
     );
 };
 
+// Style
 const styles = StyleSheet.create({
   image: {
     width: 95,
