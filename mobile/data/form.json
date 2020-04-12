@@ -9,11 +9,13 @@
 				},
 				{
 					"type": "datepicker",
-					"name": "Datepicker Title"
+					"name": "Datepicker Title",
+					"mode": "manual"
 				},
 				{
 					"type": "timepicker",
-					"name": "Timepicker Title"
+					"name": "Timepicker Title",
+					"mode": "manual"
 				},
 				{
 					"type": "imagepicker",
@@ -48,7 +50,7 @@
 				},
 				{
 					"type": "radiogroup",
-					"name": "Radion Title",
+					"name": "Radio Title",
 					"choices": [
 						"item1",
 						"item2",
@@ -73,6 +75,14 @@
 						"item2",
 						"item3"
 					]
+				},
+				{
+					"type": "camera",
+					"name": "Camera Title"
+				},
+				{
+					"type": "geolocation",
+					"name": "Geolocation Title"
 				}
 			]
 		}
