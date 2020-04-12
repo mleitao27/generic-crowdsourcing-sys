@@ -17,24 +17,25 @@ import * as Permissions from 'expo-permissions';
 import Icon from "react-native-vector-icons/Ionicons";
 import Colors from '../constants/colors';
 
+// Allow to take photos, store them im the gallery, with preview and send base64 data
 const CameraElement = props => {
 
     // Camera and camera roll permissions
     const [cameraPermission, setCameraPermission] = useState(null);
     const [cameraRollPermission, setCameraRollPermission] = useState(null);
-    
+
     // Camera type
     const [type, setType] = useState(Camera.Constants.Type.back);
 
     // Flash type
     const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
-    
+
     // Camera
     const [camera, setCamera] = useState(null);
 
     // To activate camera modal
     const [photoTaken, setPhotoTaken] = useState(null);
-    
+
     // To allow photo validation after taking it
     const [validatingPhoto, setValidatingPhoto] = useState(false);
 
@@ -48,13 +49,14 @@ const CameraElement = props => {
             const permissions = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
             setCameraPermission(permissions.permissions.camera.status === 'granted');
             setCameraRollPermission(permissions.permissions.cameraRoll.status === 'granted');
+            props.onChange(props.pageIndex, props.index, '');
         })();
     }, []);
 
     // When the take picture btn is pressed
     const takePicture = async () => {
         // Set options (after picture taken and base64 encoding)
-        const options = { onPictureSaved: saveInGallery, base64:false }
+        const options = { onPictureSaved: saveInGallery, base64: false }
         // Take photo
         if (camera) {
             let photo = await camera.takePictureAsync(options);
@@ -103,7 +105,7 @@ const CameraElement = props => {
             if (validatingPhoto)
                 return (
                     <Modal>
-                        <ImageBackground style={{flex:1}} source={{uri: photoUri}}>
+                        <ImageBackground style={{ flex: 1 }} source={{ uri: photoUri }}>
                             <View style={styles.iconContainer}>
                                 <TouchableOpacity onPress={() => setPhotoTaken(false)}>
                                     <Icon name='ios-close' size={72} color={'white'} />
@@ -126,7 +128,7 @@ const CameraElement = props => {
                     <View style={styles.container}>
                         <Text style={styles.title}>{props.title}</Text>
                         <View style={styles.content}>
-                            <Image style={styles.preview} source={{uri: photoUri}}/>
+                            <Image style={styles.preview} source={{ uri: photoUri }} />
                             <TouchableOpacity style={styles.button} onPress={() => setPhotoTaken(false)}>
                                 <Icon name='ios-camera' size={72} color={Colors.secondary} />
                             </TouchableOpacity>
@@ -142,7 +144,7 @@ const CameraElement = props => {
                     <View style={{ flex: 1 }}>
                         <Camera style={{ flex: 1 }} type={type} ref={ref => { setCamera(ref); }} ratio={'16:9'} flashMode={flash}>
                             <View
-                                style={{...styles.iconContainer, flex:0.5, alignItems:'flex-start', justifyContent:'flex-end'}}>
+                                style={{ ...styles.iconContainer, flex: 0.5, alignItems: 'flex-start', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity onPress={() => {
                                     if (photoUri === '')
                                         setPhotoTaken(null);
@@ -153,7 +155,7 @@ const CameraElement = props => {
                                 </TouchableOpacity>
                             </View>
                             <View
-                                style={{...styles.iconContainer, flex:0.5}}>
+                                style={{ ...styles.iconContainer, flex: 0.5 }}>
                                 <TouchableOpacity
                                     onPress={() => {
                                         setType(
@@ -167,7 +169,7 @@ const CameraElement = props => {
                                 <TouchableOpacity onPress={takePicture}>
                                     <Icon name='ios-camera' size={50} color={'white'} />
                                 </TouchableOpacity>
-                                <TouchableOpacity 
+                                <TouchableOpacity
                                     onPress={() => {
                                         setFlash(
                                             flash === Camera.Constants.FlashMode.off
@@ -183,7 +185,7 @@ const CameraElement = props => {
                     </View>
                 </Modal>
             );
-        
+
         }
     }
 };
@@ -202,8 +204,8 @@ const styles = StyleSheet.create({
         marginBottom: Dimensions.get('window').height * 0.02
     },
     preview: {
-        width: Dimensions.get('window').width*0.5,
-        height: Dimensions.get('window').width*0.5
+        width: Dimensions.get('window').width * 0.5,
+        height: Dimensions.get('window').width * 0.5
     },
     iconContainer: {
         flex: 1,
@@ -222,8 +224,8 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: Dimensions.get('window').width*0.1
-      }
+        margin: Dimensions.get('window').width * 0.1
+    }
 });
 
 export default CameraElement;
