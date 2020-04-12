@@ -70,6 +70,7 @@ const MatrixDropdownElement = props => {
                     <View key={indexr} style={{ flexDirection: "row", alignItems: "center" }} >
                         <Text> {row}</Text>
                         <View key={indexr} style={styles.bodyContainer}>
+                            <Picker.Item label={'-'} value={''} />
                             {props.columns.map((column, indexc) => {
                                 return (
                                     <View key={indexc} style={{ width: 80 }}>
