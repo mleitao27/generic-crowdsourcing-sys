@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    TouchableOpacity
+} from 'react-native';
 
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -44,9 +50,9 @@ const MatrixElement = props => {
     };
 
     return (
-        <View>
+        <View style={styles.container}>
             <Text style={styles.title}>{props.title}</Text>
-            <View style={styles.container1}>
+            <View style={styles.headerContainer}>
                 {props.columns.map((column, indexc) => {
                     return (
                         <Text key={indexc}>{column}</Text>
@@ -57,7 +63,7 @@ const MatrixElement = props => {
                 return (
                     <View key={indexr} style={{ flexDirection: "row" }}>
                         <Text>{row}</Text>
-                        <View key={indexr} style={styles.container2}>
+                        <View key={indexr} style={styles.bodyContainer}>
                             {props.columns.map((column, indexc) => {
                                 return (
                                     <View key={indexc} >
@@ -78,17 +84,20 @@ const MatrixElement = props => {
 
 // Styles
 const styles = StyleSheet.create({
+    container: {
+        paddingVertical: Dimensions.get('window').height * 0.05
+    },
     title: {
         fontSize: 18,
         marginBottom: Dimensions.get("window").height * 0.02,
     },
-    container1: {
+    headerContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginLeft: Dimensions.get("window").width * 0.17
 
     },
-    container2: {
+    bodyContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginLeft: Dimensions.get("window").width * 0.10,
