@@ -7,6 +7,8 @@ import {
     Dimensions
 } from 'react-native';
 
+import { WebView } from 'react-native-webview';
+
 import Colors from '../constants/colors';
 
 // Displays expression inside a box in the form screen
@@ -15,8 +17,12 @@ const HtmlElement = props => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{props.title}</Text>
-            <View style={styles.expressionContainer}>
-                <Text style={styles.text}>{props.html}</Text>
+            <View style={styles.htmlContainer}>
+            <WebView
+                originWhitelist={['*']}
+                source={{html:props.html}}
+                style={styles.html}
+            />
             </View>
         </View>
     );
@@ -38,8 +44,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: Dimensions.get('window').height * 0.02
     },
-    text: {
-        fontSize: 16
+    html: {
+        height: Dimensions.get('window').height * 0.3
+    },
+    htmlContainer: {
+        borderWidth: 1,
+        borderColor: Colors.secondary
     }
 });
 

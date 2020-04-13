@@ -31,7 +31,7 @@ const MatrixDropdownElement = props => {
     // Initially sets all options to false and sends an empty array as answer data
     useEffect(() => {
         // Send data through the onChange prop
-        props.onChange(props.pageIndex, props.index, []);
+        props.onChange(props.pageIndex, props.index, options);
     }, []);
 
 
@@ -77,6 +77,7 @@ const MatrixDropdownElement = props => {
                                             mode="dialog"
                                             selectedValue={options[indexr][indexc].value}
                                             onValueChange={matrixHandler.bind(this, indexr, indexc, row, column)}>
+                                            <Picker.Item label={'-'} value={''} />
                                             {props.choices.map((choice, index) => {
                                                 return (<Picker.Item label={String(choice)} value={choice} key={index} />)
                                             })}
