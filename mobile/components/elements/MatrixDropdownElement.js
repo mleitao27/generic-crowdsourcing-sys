@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useEffect } from 'react';
 import {
     View,
@@ -7,25 +8,24 @@ import {
     Picker
 } from 'react-native';
 
+// Matrix Element that allows to select a value for each column by each row, with a dropdown menu
 const MatrixDropdownElement = props => {
-
 
     // Variable used to update option's state
     let auxOptions = [];
-    // State that stores the state of each option
+
+    // Dummy state used to force render
+    const [dummyState, setDummyState] = useState(false);
+
+    // State that stores the state of each option, having a 2D array for the rows and columns
     const [options, setOptions] = useState(() => {
         for (var i = 0; i < props.rows.length; i++)
             auxOptions[i] = [];
         for (var i = 0; i < props.rows.length; i++)
             for (var j = 0; j < props.columns.length; j++)
                 auxOptions[i][j] = { row: props.rows[i], column: props.columns[j].name, value: "" };
-
-
         return auxOptions;
     });
-
-    // Dummy state used to force render
-    const [dummyState, setDummyState] = useState(false);
 
 
     // Initially sets all options to false and sends an empty array as answer data
@@ -53,7 +53,6 @@ const MatrixDropdownElement = props => {
         // Forces render
         setDummyState(!dummyState);
     };
-
 
     return (
         <View style={styles.container}>

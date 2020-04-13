@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useEffect } from 'react';
 import {
     View,
@@ -9,8 +10,8 @@ import {
 
 import Icon from "react-native-vector-icons/Ionicons";
 
+// Matrix Element that allows to select a column by each row, with Radio Button Components
 const MatrixElement = props => {
-
 
     // Variable used to update option's state
     let auxOptions = [];
@@ -68,7 +69,10 @@ const MatrixElement = props => {
                                 return (
                                     <View key={indexc} >
                                         <TouchableOpacity onPress={matrixHandler.bind(this, indexr, column)}>
-                                            <Icon name={options[indexr].column === column ? "ios-radio-button-on" : "ios-radio-button-off"} size={24} color={Colors.primary} />
+                                            <Icon 
+                                            name={options[indexr].column === column ? "ios-radio-button-on" : "ios-radio-button-off"} 
+                                            size={24} 
+                                            color={Colors.primary} />
                                         </TouchableOpacity>
                                     </View>
                                 );
@@ -80,7 +84,6 @@ const MatrixElement = props => {
         </View>
     );
 };
-
 
 // Styles
 const styles = StyleSheet.create({
