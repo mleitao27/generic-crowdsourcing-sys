@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useEffect } from 'react';
 import {
     View,
@@ -7,11 +8,14 @@ import {
     Dimensions
 } from 'react-native';
 
+// Image Element inserted by user built with react native Image component
 const ImageElement = props => {
     
+    // State that stores image dimensions
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
 
+    // On first render send default value in answer data in the form component
     useEffect(() => {
         Image.getSize(props.url, (width, height) => {setHeight(height); setWidth(width);});
     });
@@ -26,6 +30,7 @@ const ImageElement = props => {
     );
 };
 
+// Styles
 const styles = StyleSheet.create({
     container: {
         paddingVertical: Dimensions.get('window').height * 0.05

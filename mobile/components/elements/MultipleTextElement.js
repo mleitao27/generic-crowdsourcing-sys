@@ -1,9 +1,16 @@
+// Imports
 import React, { useState, useEffect } from 'react';
-import { TextInput, View, Text, StyleSheet, Dimensions } from "react-native";
+import { 
+  TextInput, 
+  View, 
+  Text, 
+  StyleSheet, 
+  Dimensions 
+} from "react-native";
 
 import Colors from "../../constants/colors";
 
-// Text inserted by user built with react native TextInput component
+// Multiple Text Boxes inserted by user built with react native TextInput component
 const MultipleTextElement = props => {
 
   // Variable used to update option's state
@@ -21,10 +28,8 @@ const MultipleTextElement = props => {
 
   // Initially sets all options to false and sends an empty array as answer data
   useEffect(() => {
-
     // Send data through the onChange prop
     props.onChange(props.pageIndex, props.index, []);
-
   }, []);
 
   // Called everytime user inserts text
@@ -41,9 +46,9 @@ const MultipleTextElement = props => {
 
     // Sends answer data to the form component (parent)
     props.onChange(props.pageIndex, props.index, auxOptions);
+
     // Forces render
     setDummyState(!dummyState);
-
   };
 
   return (

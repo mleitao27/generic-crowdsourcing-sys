@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -100,6 +101,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   }
 });
-
 
 export default ImagePickerElement;
