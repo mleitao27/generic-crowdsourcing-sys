@@ -1,11 +1,9 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import Colors from '../../constants/colors';
 import data from '../../data/form.json';
 
-import CustomButton from '../CustomButton';
-import Form from '../Form';
+import {Form} from 'react-native-json-forms';
 
 import FormExtension from '../../extension/FormExtension';
 
