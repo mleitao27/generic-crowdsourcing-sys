@@ -156,6 +156,7 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                        html={e.html}
                     />
                 );
             else if (e.type === 'image') 
@@ -166,6 +167,7 @@ const Form = props => {
                         index={index}
                         pageIndex={pageIndex}
                         title={e.name}
+                        url={e.imageLink}
                     />
                 );
             else if (e.type === 'imagepicker') 
@@ -316,7 +318,8 @@ const Form = props => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: Dimensions.get('window').width * 0.03
+        paddingHorizontal: Dimensions.get('window').width * 0.03,
+        paddingVertical: Dimensions.get('window').height * 0.03,
     }
 });
 

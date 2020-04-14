@@ -140,16 +140,21 @@ const CameraElement = props => {
         else {
             // Render camera modal
             return (
-                <Modal>
+                <Modal animationType='slide'>
                     <View style={{ flex: 1 }}>
                         <Camera style={{ flex: 1 }} type={type} ref={ref => { setCamera(ref); }} ratio={'16:9'} flashMode={flash}>
                             <View
                                 style={{ ...styles.iconContainer, flex: 0.5, alignItems: 'flex-start', justifyContent: 'flex-end' }}>
                                 <TouchableOpacity onPress={() => {
-                                    if (photoUri === '')
+                                    if (photoUri === '') {
                                         setPhotoTaken(null);
-                                    else
+                                        setValidatingPhoto(false);
+                                    }
+                                    else {
                                         setPhotoTaken(true);
+                                        setValidatingPhoto(false);
+
+                                    }
                                 }}>
                                     <Icon name='ios-close' size={50} color={'white'} />
                                 </TouchableOpacity>

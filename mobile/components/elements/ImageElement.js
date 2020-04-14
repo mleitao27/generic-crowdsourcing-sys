@@ -16,7 +16,7 @@ const ImageElement = props => {
     const [height, setHeight] = useState(0);
 
     // On first render send default value in answer data in the form component
-    useEffect(() => {
+    useEffect(() => { 
         Image.getSize(props.url, (width, height) => {setHeight(height); setWidth(width);});
     });
 
