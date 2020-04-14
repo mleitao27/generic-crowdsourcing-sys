@@ -62,7 +62,7 @@ const MatrixElement = props => {
             </View>
             {props.rows.map((row, indexr) => {
                 return (
-                    <View key={indexr} style={{ flexDirection: "row" }}>
+                    <View key={indexr} style={{ flexDirection: "row", alignItems: 'center' }}>
                         <Text>{row}</Text>
                         <View key={indexr} style={styles.bodyContainer}>
                             {props.columns.map((column, indexc) => {
