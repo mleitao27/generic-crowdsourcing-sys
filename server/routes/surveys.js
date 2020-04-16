@@ -4,7 +4,7 @@ var router = express.Router();
 
 var formData = require('../data/form.json');
 
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     res.status(200).send(formData);
 });
 
