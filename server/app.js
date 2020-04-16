@@ -10,6 +10,7 @@ const app = express();
 
 // Routers
 var usersRouter = require('./routes/users');
+var surveysRouter = require('./routes/surveys');
 
 // Middleware
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 // Endpoints
 app.use('/api/users', usersRouter);
+app.use('/api/surveys', surveysRouter);
 
 app.get('/:uid', (req, res) => {
     cache.get(req.params.uid)
