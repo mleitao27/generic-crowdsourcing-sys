@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import LogoutPage from './pages/LogoutPage';
 import AdminPage from './pages/AdminPage';
+import ResearcherPage from './pages/ResearcherPage';
 
 const App = props => {
 
@@ -62,6 +63,7 @@ const App = props => {
         <Route path='/login' render={props => <LoginPage {...props} onLogin={changeLoggedState} isLogged={logged} />} />
         <Route path='/logout' render={props => <LogoutPage {...props} onLogout={changeLoggedState} isLogged={logged} userEmail={userEmail} />} />
         <Route exact path='/admin' render={props => <AdminPage {...props} onLogout={changeLoggedState} isLogged={logged} userType={userType} adminEmail={userEmail} />} />
+        <Route path='/researcher' render={props => <ResearcherPage {...props} onLogin={changeLoggedState} isLogged={logged} />} />
       </div>
     </Router>
   );

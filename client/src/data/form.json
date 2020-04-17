@@ -1,0 +1,117 @@
+{
+	"pages": [
+		{
+			"name": "page1",			
+			"elements": [
+                {
+                    "type": "multipletext",
+                    "name": "question16",
+                    "items": [
+                        {
+                            "name": "text1"
+                        },
+                        {
+                            "name": "text2"
+                        }
+                    ]
+				},
+                {
+                    "type": "expression",
+                    "name": "question11",
+                    "commentText": "Other (describe)"
+                },
+				{
+					"type": "datepicker",
+					"name": "Datepicker Title",
+					"mode": "manual"
+				},
+				{
+					"type": "timepicker",
+					"name": "Timepicker Title",
+					"mode": "manual"
+				},
+				{
+                    "type": "matrixdropdown",
+                    "name": "question14",
+                    "columns": [
+                        {
+                            "name": "Column 1"
+                        },
+                        {
+                            "name": "Column 2"
+                        },
+                        {
+                            "name": "Column 3"
+                        }
+                    ],
+                    "choices": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "rows": [
+                        "Row 1",
+                        "Row 2"
+                    ]
+				},
+				{
+                    "type": "comment",
+                    "name": "question5"
+                },
+				{
+                    "type": "boolean",
+                    "name": "question8",
+                    "labelTrue": "Yes",
+                    "labelFalse": "No"
+                },
+				{
+					"type": "dropdown",
+					"name": "Dropdown Title",
+					"choices": [
+						"item1",
+						"item2",
+						"item3"
+					]
+				},
+				{
+					"type": "radiogroup",
+					"name": "Radio Title",
+					"choices": [
+						"item1",
+						"item2",
+						"item3"
+					]
+				},
+				{
+					"type": "boolean",
+					"name": "Boolean Title"
+				},
+				{
+					"type": "range",
+					"name": "Range Title",
+					"min": 0,
+					"max": 200
+				},
+				{
+					"type": "checkbox",
+					"name": "Checkbox Title",
+					"choices": [
+						"item1",
+						"item2",
+						"item3"
+					]
+				},
+				{
+					"type": "camera",
+					"name": "Camera Title"
+				},
+				{
+					"type": "geolocation",
+					"name": "Geolocation Title"
+				}
+			]
+		}
+	]
+}
