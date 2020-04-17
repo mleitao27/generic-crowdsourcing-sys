@@ -1,21 +1,22 @@
 import axios from 'axios';
 import config from '../extension/config';
 
-import JSONdata from '../data/form.json';
-
-const jsonHandler = props => {   
+const jsonHandler = (param)  => {   
    // Render user list when button clicked
+   
+   const params = {
+       'json': param
+   };
 
-    const params = {data: JSONdata};
     axios.post(`${config.serverURL}/api/users/json`, params)
     .then(res => {
         // If successful set user list
-        console.log(res);
+        console.log(res.status);
     })
     .catch(error => {
         console.log(error);
     });
 
-}
+};
 
 export default jsonHandler;
