@@ -8,7 +8,7 @@ const jsonHandler = (param)  => {
        'json': param
    };
 
-    axios.post(`${config.serverURL}/api/users/json`, params)
+    axios.post(`${config.serverURL}/api/surveys/submit`, params)
     .then(res => {
         // If successful set user list
         console.log(res.status);
