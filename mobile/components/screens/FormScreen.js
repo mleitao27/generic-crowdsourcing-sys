@@ -22,10 +22,13 @@ const FormScreen = props => {
     useEffect(() => {
         (async () => {
             const res = await fetch(`${config.serverURL}/api/surveys/`,{
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify({
+                    email:  props.navigation.state.params.email
+                })
             });
     
             if (res.status == 200){
@@ -33,7 +36,7 @@ const FormScreen = props => {
                 setLoaded(true);
             }
             else
-                Alert.alert('ERROR', 'User already registered with that e-mail.');
+                Alert.alert('ERROR', 'Form unavailable.');
         })();
     }, []);
 
