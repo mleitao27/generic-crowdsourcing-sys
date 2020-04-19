@@ -11,7 +11,6 @@ const getForm = (req, res) => {
         else {
             const surveys = await db.loadCollection('surveys');
             const json = await surveys.find().toArray();
-            console.log(json[0]);
             res.status(200).send(json[0]);
         }
     });
@@ -25,9 +24,9 @@ const submitForm = (req, res) => {
         else {
             const surveys = await db.loadCollection('surveys');
             const json = await surveys.find().toArray();
-            console.log(json[0]);
-            await surveys.deleteOne({name: json[0].name});
-            await surveys.insertOne(req.body.json);
+            if (json.length > 0)
+                await surveys.deleteOne({name: json[0].name});
+            await surveys.insertOne(JSON.parse(req.body.json));
             res.status(200).send();
         }
     });
