@@ -4,8 +4,14 @@ var router = express.Router();
 
 var formData = require('../data/form.json');
 
-router.get('/', async (req, res) => {
-    res.status(200).send(formData);
+const surveyExtension = require('../extension/surveysExtension');
+
+router.post('/', async (req, res) => {
+    surveyExtension.getForm(req, res);
+});
+
+router.post('/submit', async (req, res) => {
+    surveyExtension.submitForm(req, res);
 });
 
 // Export router
