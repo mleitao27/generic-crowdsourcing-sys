@@ -21,4 +21,14 @@ const getForm = (req, res) => {
     });
 };
 
+const submitForm = (req, res) => {
+
+};
+
+const processAnswer = (req, res) => {
+
+};
+
 exports.getForm = getForm;
+exports.submitForm = submitForm;
+exports.processAnswer = processAnswer;

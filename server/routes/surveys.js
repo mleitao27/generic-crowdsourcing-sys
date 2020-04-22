@@ -14,5 +14,9 @@ router.post('/submit', async (req, res) => {
     surveyExtension.submitForm(req, res);
 });
 
+router.post('/answer', async (req, res) => {
+    surveyExtension.processAnswer(req, res);
+});
+
 // Export router
 module.exports = router;
