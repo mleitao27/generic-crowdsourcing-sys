@@ -40,8 +40,20 @@ const FormScreenExtension = props => {
         })();
     }, []);
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const res = await fetch(`${config.serverURL}/api/surveys/answer`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email:  props.navigation.state.params.email,
+                answer: data
+            })
+        });
+
+        if (res.status == 200) Alert.alert('SUCCESS', 'Form data submitted.');
+        else Alert.alert('ERROR', 'Form unavailable.');
     };
 
     if (loaded === null)
