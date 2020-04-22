@@ -6,6 +6,9 @@ var cache = require('../modules/cache');
 const json1 = require('../data/form.json');
 const json2 = require('../data/test.json');
 
+var feedback = require('./feedback');
+var dbStorage = require('./dbStorage');
+
 const getForm = (req, res) => {
     cache.get(req.body.email)
     .then(async result => {
@@ -32,6 +35,7 @@ const processAnswer = (req, res) => {
     feedback.diffFeedback();
     // Database storage
     dbStorage.storeAnswer();
+    res.status(200).send();
 };
 
 exports.getForm = getForm;
