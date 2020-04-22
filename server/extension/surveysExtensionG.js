@@ -3,6 +3,9 @@ var express = require('express');
 var db = require('../modules/db');
 var cache = require('../modules/cache');
 
+var feedback = require('./feedback');
+var dbStorage = require('./dbStorage');
+
 const getForm = (req, res) => {
     cache.get(req.body.email)
     .then(async result => {
@@ -33,7 +36,12 @@ const submitForm = (req, res) => {
 };
 
 const processAnswer = (req, res) => {
-
+    // Immediate Feedback
+    feedback.immediateFeedback();
+    // Differenciated Feedback
+    feedback.diffFeedback();
+    // Database storage
+    dbStorage.storeAnswer();
 };
 
 exports.getForm = getForm;

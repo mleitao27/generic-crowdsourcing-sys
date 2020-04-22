@@ -26,7 +26,12 @@ const submitForm = (req, res) => {
 };
 
 const processAnswer = (req, res) => {
-
+    // Immediate Feedback
+    feedback.immediateFeedback();
+    // Differenciated Feedback
+    feedback.diffFeedback();
+    // Database storage
+    dbStorage.storeAnswer();
 };
 
 exports.getForm = getForm;
