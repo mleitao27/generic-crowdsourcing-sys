@@ -16,7 +16,7 @@ const getForm = (req, res) => {
         if (typeof result === 'undefined') res.status(404).send();
         else {
             const date = new Date();
-            if (date.getHours() > 11)
+            if (date.getHours() > 20)
                 res.status(200).send(json1);
             else
                 res.status(200).send(json2);
@@ -34,8 +34,8 @@ const processAnswer = (req, res) => {
     // Differenciated Feedback
     feedback.diffFeedback();
     // Database storage
-    dbStorage.storeAnswer();
-    res.status(200).send();
+    dbStorage.storeAnswer(req);
+    res.status(200).send({immediateFeedback: 'Thank You!'});
 };
 
 exports.getForm = getForm;
