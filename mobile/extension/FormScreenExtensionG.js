@@ -58,7 +58,7 @@ const FormScreenExtension = props => {
             Alert.alert('SUCCESS', feedback.immediateFeedback);
             props.navigation.pop();
         }
-        else Alert.alert('ERROR', 'Form unavailable.');
+        else Alert.alert('ERROR', 'Unable to submit form.');
     };
 
     if (loaded === null)
