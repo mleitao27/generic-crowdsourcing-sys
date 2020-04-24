@@ -52,7 +52,12 @@ const FormScreenExtension = props => {
             })
         });
 
-        if (res.status == 200) Alert.alert('SUCCESS', 'Form data submitted.');
+        const feedback = await res.json();
+
+        if (res.status == 200) {
+            Alert.alert('SUCCESS', feedback.immediateFeedback);
+            props.navigation.pop();
+        }
         else Alert.alert('ERROR', 'Form unavailable.');
     };
 
