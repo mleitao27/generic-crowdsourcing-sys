@@ -16,7 +16,7 @@ const getForm = (req, res) => {
         if (typeof result === 'undefined') res.status(404).send();
         else {
             const date = new Date();
-            if (date.getHours() > 20)
+            if (date.getHours() < 20)
                 res.status(200).send(json1);
             else
                 res.status(200).send(json2);
@@ -29,13 +29,20 @@ const submitForm = (req, res) => {
 };
 
 const processAnswer = (req, res) => {
-    // Immediate Feedback
-    feedback.immediateFeedback();
-    // Differenciated Feedback
-    feedback.diffFeedback();
-    // Database storage
-    dbStorage.storeAnswer(req);
-    res.status(200).send({immediateFeedback: 'Thank You!'});
+    cache.get(req.body.email)
+    .then(async result => {
+        // If user not in cache
+        if (typeof result === 'undefined') res.status(404).send();
+        else {
+            // Immediate Feedback
+            feedback.immediateFeedback();
+            // Differenciated Feedback
+            feedback.diffFeedback();
+            // Database storage
+            dbStorage.storeAnswer(req);
+            res.status(200).send({immediateFeedback: 'Thank You!'});
+        }
+    });
 };
 
 exports.getForm = getForm;

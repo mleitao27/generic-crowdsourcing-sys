@@ -8,8 +8,7 @@ const immediateFeedback = () => {
 const diffFeedback = () => {
     console.log('diffFeedback');
     diffFeedbacksArray.feedbacks.map(feedback => {
-        const name = feedback.name;
-        feedback.module.diffFeedback();
+        feedback.module();
     });
 };
 
