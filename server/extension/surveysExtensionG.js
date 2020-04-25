@@ -20,19 +20,8 @@ const getForm = (req, res) => {
 };
 
 const submitForm = (req, res) => {
-    cache.get(req.body.email)
-    .then(async result => {
-        // If user not in cache
-        if (typeof result === 'undefined') res.status(404).send();
-        else {
-            const surveys = await db.loadCollection('surveys');
-            const json = await surveys.find().toArray();
-            if (json.length > 0)
-                await surveys.deleteOne({name: json[0].name});
-            await surveys.insertOne(JSON.parse(req.body.json));
-            res.status(200).send();
-        }
-    });
+    dbStorage.storeForm(req);
+    res.status(200).send();
 };
 
 const processAnswer = (req, res) => {
@@ -41,7 +30,8 @@ const processAnswer = (req, res) => {
     // Differenciated Feedback
     feedback.diffFeedback();
     // Database storage
-    dbStorage.storeAnswer();
+    dbStorage.storeAnswer(req);
+    res.status(200).send({immediateFeedback: 'Thank You!'});
 };
 
 exports.getForm = getForm;
