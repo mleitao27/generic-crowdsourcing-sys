@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import MainButton from '../components/MainButton';
 
 import axios from 'axios';
-import config from '../extension/config';
+import config from './config';
 
-const JSONLoader = props => {
+const ResearcherExtension = props => {
 
     const [value, setValue] = useState('');
 
@@ -61,5 +61,5 @@ const JSONLoader = props => {
     );
 };
 
-export default JSONLoader;
+export default ResearcherExtension;
     
