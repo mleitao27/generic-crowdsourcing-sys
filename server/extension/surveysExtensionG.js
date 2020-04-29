@@ -1,5 +1,4 @@
 var express = require('express');
-
 var db = require('../modules/db');
 var cache = require('../modules/cache');
 
