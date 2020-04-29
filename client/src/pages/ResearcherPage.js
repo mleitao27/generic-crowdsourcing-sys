@@ -1,12 +1,12 @@
 import React from 'react';
-import JSONLoader from '../extension/JSONLoader';
+import ResearcherExtension from '../extension/ResearcherExtension';
 
 const ResearcherPage = props => {
     
     return (
         <React.Fragment>
             <h1>Researcher Page</h1>
-            <JSONLoader userEmail={props.userEmail}></JSONLoader>
+            <ResearcherExtension userEmail={props.userEmail}></ResearcherExtension>
         </React.Fragment>
     );
 };
