@@ -9,6 +9,9 @@ const LandingPage = props => {
     // If admin is logged
     if (props.isLogged && props.userType === 'admin')
         content = <Redirect to='/admin' />;
+    // If researcher is logged
+    if (props.isLogged && props.userType === 'researcher')
+    content = <Redirect to='/researcher' />;
     
     return (
         <React.Fragment>

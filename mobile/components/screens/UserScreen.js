@@ -26,7 +26,7 @@ const UserScreen = props => {
         <View>
             <CustomButton
                 title='Form'
-                onPress={() => props.navigation.navigate({routeName: 'Form'})}
+                onPress={() => props.navigation.navigate({routeName: 'Form', params: {email: props.email}})}
                 backgroundColor={Colors.primary}
                 textColor={Colors.secondary}
                 />
