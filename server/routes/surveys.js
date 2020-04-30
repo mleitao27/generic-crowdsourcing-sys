@@ -2,9 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
-var formData = require('../data/form.json');
-
-const surveyExtension = require('../extension/surveysExtensionM');
+const surveyExtension = require('../extension/surveysExtension');
 
 router.post('/', async (req, res) => {
     surveyExtension.getForm(req, res);
