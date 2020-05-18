@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { View } from 'react-native';
 
 import Colors from '../../constants/colors';
 import config from '../../extension/config';
 
 import CustomButton from '../CustomButton';
+import activationJSON from '../../config/activationJSON.json';
 
 const UserScreen = props => {
+    
+    useEffect(() => {
+        checkActivation(activationJSON);
+    }, []);
+
+    const checkActivation = (json) => {
+        json.ActivationModes.map((ActivationMode, ActivationModeIndex) => {
+            if(ActivationMode.status === 'active'){
+                if(ActivationMode.mode === 'null'){}
+                else if(ActivationMode.mode === 'area'){}
+                else if(ActivationMode.mode === 'delta'){}
+                else if(ActivationMode.mode === 'activity'){}
+                else if(ActivationMode.mode === 'time'){}
+            }
+         })
+    };
 
     const logout = async () => {
         const res = await fetch(`${config.serverURL}/api/users/logout`,{
