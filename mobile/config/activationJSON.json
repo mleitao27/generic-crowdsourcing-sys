@@ -9,65 +9,37 @@
             "status": "inactive",
             "areas": [
                 {
-                    "area": "Alameda",
+                    "name": "Alameda",
                     "type": "Avenue",
-                    "polygonCords": [
-                        {
-                            "lat":"65465846853546",
-                            "lon":"65465846853546"
-                        },
-                        {
-                            "lat":"7856263856356",
-                            "lon":"56547378786786"
-                        },
-                        {
-                            "lat":"65465846853546",
-                            "lon":"65465846853546"
-                        },
-                        {
-                            "lat":"65465846853546",
-                            "lon":"65465846853546"
-                        },
-                        {
-                            "lat":"65465846853546",
-                            "lon":"65465846853546"
-                        }
-                    ]
+                    "lat": "65465846853546",
+                    "long": "65465846853546",
+                    "radius": "123"
                 },
                 {
-                    "area": "Arco do Cego",
+                    "name": "Arco do Cego",
                     "type": "Garden",
-                    "polygonCords": [
-                        {
-                            "lat":"65465846853546",
-                            "lon":"65465846853546"
-                        },
-                        {
-                            "lat":"7856263856356",
-                            "lon":"56547378786786"
-                        }
-                    ]
+                    "lat": "65465846853546",
+                    "long": "65465846853546",
+                    "radius": "123"
                 }
             ]   
         },
         {
-            "mode": "delta",
+            "mode": "deltat",
             "status": "inactive",
-            "delta": "distance",
-            "maxValue": "500",
-            "minValue": "50"
+            "delta": "60"
         },
         {
             "mode": "activity",
             "status": "inactive",
             "activity": "running",
-            "timing": "end"   
+            "timing": "end"  
         },
         {
             "mode": "time",
             "status": "inactive",
-            "start": "00:00",
-            "end": "24:00"   
+            "start": "00:00:00",
+            "end": "24:00:00"   
         }
     ]
 }
