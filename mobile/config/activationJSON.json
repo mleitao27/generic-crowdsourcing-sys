@@ -1,12 +1,10 @@
 {
     "ActivationModes": [
         {
-            "mode": "null",
-            "status": "active"   
+            "mode": "null"
         },
         {
             "mode": "area",
-            "status": "inactive",
             "areas": [
                 {
                     "name": "Alameda",
@@ -26,18 +24,15 @@
         },
         {
             "mode": "deltat",
-            "status": "inactive",
             "delta": "60"
         },
         {
             "mode": "activity",
-            "status": "inactive",
             "activity": "running",
             "timing": "end"  
         },
         {
             "mode": "time",
-            "status": "inactive",
             "start": "00:00:00",
             "end": "24:00:00"   
         }
