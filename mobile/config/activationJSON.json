@@ -1,43 +1,38 @@
 {
     "ActivationModes": [
         {
-            "mode": "null",
-            "status": "active"   
+            "mode": "null"
         },
         {
             "mode": "area",
-            "status": "inactive",
             "areas": [
                 {
                     "name": "Alameda",
                     "type": "Avenue",
-                    "lat": "65465846853546",
-                    "long": "65465846853546",
-                    "radius": "123"
+                    "lat": "38.737201",
+                    "long": "-9.132109",
+                    "radius": "200"
                 },
                 {
                     "name": "Arco do Cego",
                     "type": "Garden",
-                    "lat": "65465846853546",
-                    "long": "65465846853546",
-                    "radius": "123"
+                    "lat": "38.7357451",
+                    "long": "-9.1423017",
+                    "radius": "75"
                 }
             ]   
         },
         {
             "mode": "deltat",
-            "status": "inactive",
             "delta": "60"
         },
         {
             "mode": "activity",
-            "status": "inactive",
             "activity": "running",
             "timing": "end"  
         },
         {
             "mode": "time",
-            "status": "inactive",
             "start": "00:00:00",
             "end": "24:00:00"   
         }
