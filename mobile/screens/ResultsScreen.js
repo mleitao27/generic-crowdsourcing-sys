@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ResultsScreenExtension from '../../extension/ResultsScreenExtension';
+import ResultsScreenExtension from '../extension/ResultsScreenExtension';
 
 const ResultsScreen = props => {
     return (
