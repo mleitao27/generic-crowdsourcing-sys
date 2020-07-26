@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { View } from 'react-native';
+import { View, TouchableOpacity, Text, Image, StyleSheet, Dimensions } from 'react-native';
 
 import Colors from '../constants/colors';
 import config from '../extension/config';
 
 import CustomButton from '../components/CustomButton';
 
-const MenuScreen
- = props => {
+import dictionary from '../data/dictionary.json';
+
+const MenuScreen = props => {
     
     const logout = async () => {
         const res = await fetch(`${config.serverURL}/api/users/logout`,{
@@ -23,24 +24,24 @@ const MenuScreen
         
         props.onLogout(false, '', '');
     };
-
+    
     return (
         <View>
             <CustomButton
-                title='Profile'
-                onPress={() => props.navigation.navigate({routeName: 'Profile'})}
+                title={dictionary[props.language].PROFILE}
+                onPress={() => props.navigation.navigate({routeName: 'Profile', params: {email: props.email, logout: logout, language: props.language}})}
                 backgroundColor={Colors.primary}
                 textColor={Colors.secondary}
                 />
             <CustomButton
-                title='Survey'
-                onPress={() => props.navigation.navigate({routeName: 'Survey', params: {email: props.email}})}
+                title={dictionary[props.language].SURVEY}
+                onPress={() => props.navigation.navigate({routeName: 'Survey', params: {email: props.email, logout: logout, language: props.language}})}
                 backgroundColor={Colors.primary}
                 textColor={Colors.secondary}
                 />
             <CustomButton
-                title='Results'
-                onPress={() => props.navigation.navigate({routeName: 'Results'})}
+                title={dictionary[props.language].RESULTS}
+                onPress={() => props.navigation.navigate({routeName: 'Results', params: {email: props.email, logout: logout, language: props.language}})}
                 backgroundColor={Colors.primary}
                 textColor={Colors.secondary}
                 />
@@ -54,5 +55,4 @@ const MenuScreen
     );
 };
 
-export default MenuScreen
-;
+export default MenuScreen;
