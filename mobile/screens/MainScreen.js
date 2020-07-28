@@ -1,4 +1,13 @@
-import React, {useState, useReducer} from 'react';
+/* 
+ * MainScreen (Component)
+ * Description : Holds the login screen initially and menu screen after the user
+ * logs into system
+ * Props :
+ * - navigation : navigation object used to navigate between the app's screens
+ */
+
+// Imports
+import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -12,7 +21,6 @@ import {
 
 } from 'react-native';
 
-import config from '../extension/config';
 import globalStyles from '../constants/globalStyles';
 import Colors from '../constants/colors';
 
@@ -23,33 +31,53 @@ import LanguagePicker from '../components/LanguagePicker';
 
 import dictionary from '../data/dictionary.json';
 
-const windowWidth = Dimensions.get('window').width;
+import config from '../extension/config';
 
+// Window width and height used for styling purposes
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+/************************************************
+ * 
+ * COMPONENT - Screen
+ * 
+ ************************************************/
 const MainScreen = props => {
 
+    /************************************************
+     * STATES
+     ************************************************/
     const [isLogged, setIsLogged] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const [language, setLanguage] = useState('en');
 
+    /************************************************
+     * FUNCTIONS
+    ************************************************/
     
+    // Changes the logged state (true if logged, false if not logged)
+    // Stores login credential (email + password)
     const changeLoggedState = (state, email, password) => {
         setIsLogged(state);
         setEmail(email);
         setPassword(password);
     };
 
+    // Handles input from email field
     const emailInputHandler = (enteredEmail) => {
         setEmail(enteredEmail);
     };
 
+    // Handles input from the password field
     const passwordInputHandler = (enteredPassword) => {
         setPassword(enteredPassword);
     };
 
+    // Logs in with the server
     const login = async () => {
 
+        // Trim email and password to check if all fields were filled
         if (email.trim() !== '' && password.trim() !== '') {
             const res = await fetch(`${config.serverURL}/api/users/login`,{
                 method: 'POST',
@@ -62,31 +90,37 @@ const MainScreen = props => {
                 })
             });
             
+            // If user not registered on the system
             if (res.status == 404)
-                Alert.alert('ERROR', 'User not registered.');
+                Alert.alert(dictionary[language].ERROR, dictionary[language].NOT_USER);
             else
                 changeLoggedState(true, email, password);
         } else {
-            Alert.alert('ERROR', 'All fields must be filled');
+            Alert.alert(dictionary[language].ERROR, dictionary[language].FIELDS_NOT_FILLED);
         }
 
     };
 
+    /************************************************
+     * PRE-RENDER
+    ************************************************/
+
+    // Initial screen content is login form
     let content = (
         <View style={globalStyles.screen} >
             <Text style={globalStyles.title}>Welcome!</Text>
             <View style={globalStyles.formContainer}>
                 <TextInput
                     style={globalStyles.formElement}
-                    placeholder="E-mail"
-                    placeholderTextColor="#ccc"
+                    placeholder={dictionary[language].EMAIL}
+                    placeholderTextColor={Colors.secondary}
                     value={email}
                     onChangeText={emailInputHandler}
                     />
                 <TextInput
                     style={globalStyles.formElement}
-                    placeholder="Password"
-                    placeholderTextColor="#ccc"
+                    placeholder={dictionary[language].PASSWORD}
+                    placeholderTextColor={Colors.secondary}
                     value={password}
                     onChangeText={passwordInputHandler}
                     secureTextEntry={true}
@@ -113,9 +147,13 @@ const MainScreen = props => {
         </View>
     );
 
+    // If user is logged render the menu screen
     if (isLogged)
         content = <MenuScreen navigation={props.navigation} onLogout={changeLoggedState} email={email} language={language}/>;
 
+    /************************************************
+     * RENDER
+     ************************************************/
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={globalStyles.screen} >
@@ -125,6 +163,7 @@ const MainScreen = props => {
     );
 };
 
+// Styles
 const styles = StyleSheet.create({
     textContainer: {
         flexDirection: 'column',
@@ -133,14 +172,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text: {
-        color:'#ccc',
-        fontSize: windowWidth*0.04
+        color: Colors.secondary,
+        fontSize: windowWidth * 0.04
     },
     textUnderline: {
         textDecorationLine: 'underline'
     }
 });
 
+// Change in navigation options
+// To change the screen's header title
 MainScreen.navigationOptions = (navData) => {
     return (
         {
@@ -149,4 +190,5 @@ MainScreen.navigationOptions = (navData) => {
     );
 };
 
+// Export Screen
 export default MainScreen;

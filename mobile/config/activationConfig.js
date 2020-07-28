@@ -4,7 +4,6 @@ import activationHandler from '../extension/activationHandler';
 const activationConfig = props => {
 
     // Activation JSON 
-
     ActivationJSON.ActivationModes.map((activationMode, index) => {
         activationHandler(activationMode);
     });
