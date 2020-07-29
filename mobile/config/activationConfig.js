@@ -1,4 +1,4 @@
-import ActivationJSON from './activationJSON.json';
+import ActivationJSON from '../extension/activationJSON.json';
 import activationHandler from '../extension/activationHandler';
 
 const activationConfig = props => {

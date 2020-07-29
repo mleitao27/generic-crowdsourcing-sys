@@ -1,0 +1,32 @@
+{
+  "ActivationModes": [
+      {
+          "mode": "null"
+      },
+      {
+          "mode": "area",
+          "areas": [{
+              "name": "area 1",
+              "area": "1234567890",
+              "id": "ID",
+              "long": "-9,2039890587",
+              "lat": "38,7086696107"
+            }
+          ]   
+      },
+      {
+          "mode": "deltat",
+          "delta": "60"
+      },
+      {
+          "mode": "activity",
+          "activity": "running",
+          "timing": "end"  
+      },
+      {
+          "mode": "time",
+          "start": "00:00:00",
+          "end": "24:00:00"   
+      }
+  ]
+}
