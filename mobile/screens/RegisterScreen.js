@@ -127,7 +127,7 @@ const RegisterScreen = props => {
 RegisterScreen.navigationOptions = (navData) => {
     return (
         {
-            headerTitle: 'Register'
+            headerTitle: dictionary[navData.navigation.state.params.language].REGISTER
         }
     );
 };
