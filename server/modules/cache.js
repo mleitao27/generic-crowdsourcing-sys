@@ -1,7 +1,7 @@
 /* 
  * cache (Module)
  * Description : Cache handling module, contains get(), set() and del() methods.
- * Allows to manage the cache built using memcached-promisify
+ * Allows to manage the cache built using memcached-promisify.
  */
 
 // Imports
