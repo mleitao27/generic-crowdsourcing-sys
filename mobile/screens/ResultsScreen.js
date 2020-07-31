@@ -6,8 +6,9 @@
  * - navigation : navigation object used to navigate between the app's screens
  */
 
- // Imports
+// Imports
 import React from 'react';
+import dictionary from '../data/dictionary.json';
 import ResultsScreenExtension from '../extension/ResultsScreenExtension';
 
 /************************************************
@@ -30,7 +31,7 @@ const ResultsScreen = props => {
 ResultsScreen.navigationOptions = (navData) => {
     return (
         {
-            headerTitle: 'Results'
+            headerTitle: dictionary[navData.navigation.state.params.language].RESULTS
         }
     );
 };

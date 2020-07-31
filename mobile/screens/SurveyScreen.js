@@ -6,8 +6,9 @@
  * - navigation : navigation object used to navigate between the app's screens
  */
 
- // Imports
+// Imports
 import React from 'react';
+import dictionary from '../data/dictionary.json';
 import SurveyScreenExtension from '../extension/SurveyScreenExtension';
 
 /************************************************
@@ -30,7 +31,7 @@ const SurveyScreen = props => {
 SurveyScreen.navigationOptions = (navData) => {
     return (
         {
-            headerTitle: 'Survey'
+            headerTitle: dictionary[navData.navigation.state.params.language].SURVEY
         }
     );
 };

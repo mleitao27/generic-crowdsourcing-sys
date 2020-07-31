@@ -8,6 +8,7 @@
 
 // Imports
 import React from 'react';
+import dictionary from '../data/dictionary.json';
 import ProfileScreenExtension from '../extension/ProfileScreenExtension';
 
 /************************************************
@@ -30,7 +31,7 @@ const ProfileScreen = props => {
 ProfileScreen.navigationOptions = (navData) => {
     return (
         {
-            headerTitle: 'Profile'
+            headerTitle: dictionary[navData.navigation.state.params.language].PROFILE
         }
     );
 };

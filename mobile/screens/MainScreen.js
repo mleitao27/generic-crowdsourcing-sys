@@ -24,14 +24,15 @@ import {
 import globalStyles from '../constants/globalStyles';
 import Colors from '../constants/colors';
 
-import CustomButton from '../components/CustomButton';
 import MenuScreen from './MenuScreen';
-import OAuthButtons from '../extension/OAuthButtons';
+import CustomButton from '../components/CustomButton';
 import LanguagePicker from '../components/LanguagePicker';
 
 import dictionary from '../data/dictionary.json';
 
+import OAuthButtons from '../extension/OAuthButtons';
 import config from '../extension/config';
+import extensionDictionary from '../extension/dictionaryExtension.json';
 
 // Window width and height used for styling purposes
 const windowWidth = Dimensions.get('window').width;
@@ -105,10 +106,15 @@ const MainScreen = props => {
      * PRE-RENDER
     ************************************************/
 
+    // Check if welcome text is provided
+    let welcomeContent = <View/>;
+    if (typeof extensionDictionary[language].WELCOME ==! 'undefined')
+        welcomeContent = <Text style={globalStyles.title}>{extensionDictionary[language].WELCOME}</Text>
+
     // Initial screen content is login form
     let content = (
         <View style={globalStyles.screen} >
-            <Text style={globalStyles.title}>Welcome!</Text>
+            {welcomeContent}
             <View style={globalStyles.formContainer}>
                 <TextInput
                     style={globalStyles.formElement}
