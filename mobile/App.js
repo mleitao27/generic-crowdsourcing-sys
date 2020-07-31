@@ -1,3 +1,9 @@
+/* 
+ * App (Main)
+ * Description : Main application file
+ */
+
+ // Imports
 import React from 'react';
 
 import MainNavigator from './navigation/MainNavigator';
