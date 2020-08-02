@@ -1,3 +1,10 @@
+/* 
+ * app (Main)
+ * Description : Server's amin file. Contains all the essential
+ * import, middleware, router's setting and and an enpoint to 
+ * check if user is in cache. Also runs the entire server.
+ */
+
 // Imports
 var express = require('express');
 var cors = require('cors');
