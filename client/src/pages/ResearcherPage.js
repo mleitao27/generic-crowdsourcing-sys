@@ -1,6 +1,6 @@
 /* 
- * LogoutPage (Component)
- * Description : Page presented when the user logs out
+ * ResearcherPage (Component)
+ * Description : Page presented to the researcher user type
  * Props :
  * - onLogout: function that changes the login flag 'isLogged' to false if the user is logged out
  * - isLogged: boolean flag indicating if the user is logged in or not
@@ -10,7 +10,11 @@
  //Imports
 import React from 'react';
 import ResearcherPageExtension from '../extension/ResearcherPageExtension';
-
+/************************************************
+ * 
+ * COMPONENT - Screen
+ * 
+ ************************************************/
 const ResearcherPage = props => {
     
     /************************************************
