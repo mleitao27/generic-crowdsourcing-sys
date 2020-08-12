@@ -1,3 +1,9 @@
+/* 
+ * surveysArray
+ * Description : Array of surveys used to dynamically select the
+ * appropriate survey
+ */
+
 // Import surveys
 const SURVEY1 = require('./survey1.json');
 const SURVEY2 = require('./survey2.json');

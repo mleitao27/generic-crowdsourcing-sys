@@ -1,3 +1,9 @@
+/* 
+ * diffFeedbackArray
+ * Description : Array of differenciated feedback modules.
+ */
+
+// Import feedback modules
 var diffFeedback1 = require('./diffFeedback1');
 var diffFeedback2 = require('./diffFeedback2');
 var diffFeedback3 = require('./diffFeedback3');
@@ -17,4 +23,5 @@ const feedbacks = [
     }
 ];
 
+// Export array
 exports.feedbacks = feedbacks;
