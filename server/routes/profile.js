@@ -18,8 +18,8 @@ router.post('/', async (req, res) => {
 });
 
 // Request to edit user's profile
-router.post('/requestEdit', async (req, res) => {
-    profileExtension.requestEditProfile(req, res);
+router.post('/editRequest', async (req, res) => {
+    profileExtension.editProfileRequest(req, res);
 });
 
 // Edit user's profile (submit changes)

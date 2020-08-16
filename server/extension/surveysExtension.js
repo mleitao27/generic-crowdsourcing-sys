@@ -9,28 +9,28 @@
 
 // Imports
 var surveysArray = require('./surveys/surveysArray').surveysArray;
-var feedback = require('./feedbackExtension');
+var feedback = require('../modules/feedback');
 var dbStorage = require('./dbExtension');
 
 // Get a survey
-const getForm = (req, res) => {
+const getSurvey = (req, res) => {
     // Get survey either from the surveys array
     // res.status(200).send(surveysArray[i]);
     // Or from somewhere else
 };
 
 // Get info to help answer survey
-const getMarkers = async (req, res) => {
+const getInfo = async (req, res) => {
     
 };
 
 // Submit and process survey answer
 const processAnswer = async (req, res) => {
     // Get immediate Feedback
-    // feedback.immediateFeedback();
+    // feedback.immediate();
 
     // Get differenciated Feedback
-    // feedback.diffFeedback();
+    // feedback.differenciated();
 
     // Get database storage
     // dbStorage.storeAnswer();
@@ -47,14 +47,14 @@ const returnFeedback = (req, res) => {
 };
 
 // Submit a new survey to the server
-const submitForm = (req, res) => {
+const submitSurvey = (req, res) => {
     
 };
 
 // Export functions
-exports.getForm = getForm;
-exports.submitForm = submitForm;
+exports.getSurvey = getSurvey;
+exports.submitSurvey = submitSurvey;
 exports.processAnswer = processAnswer;
 exports.processImage = processImage;
 exports.returnFeedback = returnFeedback;
-exports.getMarkers = getMarkers;
+exports.getInfo = getInfo;

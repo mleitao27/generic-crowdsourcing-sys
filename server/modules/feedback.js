@@ -4,21 +4,21 @@
  */
 
 // Imports
-const diffFeedbacksArray = require('./feedback/diffFeedbacksArray');
+const feedbackArray = require('../extension/feedback/feedbackArray');
 
 // Sends immeadiate feedback to the users answer
-const immediateFeedback = () => {
-    
+const immediate = () => {
+    feedbackArray.feedbacks.immediateFeedback();
 };
 
 // Call differenciated feedback modules that can will
 // deliver feed back to the user after doing some processing
-const diffFeedback = () => {
-    diffFeedbacksArray.feedbacks.map(feedback => {
+const differenciated = () => {
+    feedbackArray.feedbacks.differenciated.map(feedback => {
         feedback.module();
     });
 };
 
 // Export functions
-exports.immediateFeedback = immediateFeedback;
-exports.diffFeedback = diffFeedback;
+exports.immediate = immediate;
+exports.differenciated = differenciated;

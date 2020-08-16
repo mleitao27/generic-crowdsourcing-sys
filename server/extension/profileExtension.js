@@ -10,7 +10,7 @@ const getProfile = (req, res) => {
 };
 
 // Request to edit user's profile form
-const requestEditProfile = (req, res) => {
+const editProfileRequest = (req, res) => {
     
 };
 
@@ -21,5 +21,5 @@ const editProfile = (req, res) => {
 
 // Export funtions
 exports.getProfile = getProfile;
-exports.requestEditProfile = requestEditProfile;
+exports.editProfileRequest = editProfileRequest;
 exports.editProfile = editProfile;

@@ -7,11 +7,8 @@
 // Imports
 var mongodb = require('mongodb');
 
-// Object with db credentials
-const db = {
-    url: 'mongodb://127.0.0.1:27017/crowdsourcing',
-    name: 'crowdsourcing'
-};
+// Db credentials from configuration file
+var config = require('../extension/config');
 
 /**
  * DESCRIPTION: Connects to the database and retrieves a certain collection.
@@ -22,13 +19,13 @@ const db = {
 var loadCollection = async (collection) => {
     // Create connection
     const client = await mongodb.MongoClient.connect
-        (db.url, {
+        (config.db.url, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
 
     // Return 'collection' passed as arg
-    return client.db(db.name).collection(collection);
+    return client.db(config.db.name).collection(collection);
 };
 
 /**

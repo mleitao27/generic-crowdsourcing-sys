@@ -19,12 +19,12 @@ var upload = multer({ limits: { fieldSize: 25 * 1024 * 1024 } })
 
 // Get a survey
 router.post('/', async (req, res) => {
-    surveyExtension.getForm(req, res);
+    surveyExtension.getSurvey(req, res);
 });
 
 // Submit a new survey to the server
 router.post('/submit', async (req, res) => {
-    surveyExtension.submitForm(req, res);
+    surveyExtension.submitSurvey(req, res);
 });
 
 // Submit survey answer
@@ -43,8 +43,8 @@ router.post('/feedback', async (req, res) => {
 });
 
 // Get info to help answer survey
-router.post('/getMarkers', async (req, res) => {
-    surveyExtension.getMarkers(req, res);
+router.post('/getInfo', async (req, res) => {
+    surveyExtension.getInfo(req, res);
 });
 
 // Export router
