@@ -27,7 +27,6 @@
     "react-navigation": "^4.2.2",
     "react-navigation-stack": "^2.2.3"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "private": true
 }
