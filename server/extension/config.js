@@ -31,3 +31,4 @@ exports.admin = admin;
 exports.userTimeout = userTimeout;
 exports.recentAnswer = recentAnswer;
 exports.inUgsOffset = inUgsOffset;
+exports.db = db;
