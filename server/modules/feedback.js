@@ -8,7 +8,7 @@ const feedbackArray = require('../extension/feedback/feedbackArray');
 
 // Sends immeadiate feedback to the users answer
 const immediate = () => {
-    feedbackArray.feedbacks.immediateFeedback();
+    feedbackArray.feedbacks.immediate();
 };
 
 // Call differenciated feedback modules that can will
