@@ -32,7 +32,7 @@ import dictionary from '../data/dictionary.json';
 
 import OAuthButtons from '../extension/OAuthButtons';
 import config from '../extension/config';
-import extensionDictionary from '../extension/dictionaryExtension.json';
+import dictionaryExtension from '../extension/dictionaryExtension.json';
 
 // Window width and height used for styling purposes
 const windowWidth = Dimensions.get('window').width;
@@ -108,8 +108,8 @@ const MainScreen = props => {
 
     // Check if welcome text is provided
     let welcomeContent = <View/>;
-    if (typeof extensionDictionary[language].WELCOME ==! 'undefined')
-        welcomeContent = <Text style={globalStyles.title}>{extensionDictionary[language].WELCOME}</Text>
+    if (typeof dictionaryExtension[language].WELCOME !== 'undefined')
+        welcomeContent = <Text style={globalStyles.title}>{dictionaryExtension[language].WELCOME}</Text>
 
     // Initial screen content is login form
     let content = (
