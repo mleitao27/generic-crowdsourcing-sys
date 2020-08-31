@@ -31,7 +31,6 @@ const ProfileScreen = props => {
 ProfileScreen.navigationOptions = (navData) => {
     return (
         {
-            headerTitle: dictionary[navData.navigation.state.params.language].PROFILE
         }
     );
 };
