@@ -1,3 +1,10 @@
+/* 
+ * oauthExtension
+ * Description : Functions that extend the oauth endpoints
+ * should implement functions to register and log users
+ * into the system.
+ */
+
 // Imports
 const {OAuth2Client} = require('google-auth-library');
 var axios = require('axios');
@@ -12,6 +19,7 @@ const registerHandler = async (req, res) => {
     // Check if user logged in 3rd party
     oauthHandler(accessData)
     .then(async id => {
+        // If received user id
         if (id !== false) {
             // Find user in the db
             const users = await db.loadCollection('users');
@@ -21,6 +29,7 @@ const registerHandler = async (req, res) => {
             if (repeatedUsers.length > 0) {
                 res.status(302).send();
             } else {
+                // New user object
                 const newUser = {
                     name: accessData.name,
                     email: accessData.email,
@@ -41,12 +50,14 @@ const loginHandler = async (req, res) => {
     const accessData = req.body;
     oauthHandler(accessData)
     .then(async id => {
+        // If received user id
         if (id !== false) {
             // Find user in the db
             const users = await db.loadCollection('users');
             const repeatedUsers = await users.find({oauthId: accessData.user, email: accessData.email}).toArray();
             // If the user was found
             if (repeatedUsers.length === 1) {
+                // Store user in cache
                 cache.set(String(req.body.email), config.userTimeout);
                 res.status(200).send({type: repeatedUsers[0].type});
             }
@@ -62,6 +73,7 @@ const oauthHandler = async (accessData) => {
     if (accessData.platform === 'google') {
         return googleVerification(accessData.id, accessData.token)
         .then(id => {
+            // If user id not received set to false
             return id === accessData.user ? id : false;
         });
     }
@@ -69,6 +81,7 @@ const oauthHandler = async (accessData) => {
     else if (accessData.platform == 'facebook') {
         return facebookVerification(accessData.token)
         .then(id => {
+            // If user id not received set to false
             return id === accessData.user ? id : false;
         });
     }
@@ -93,6 +106,7 @@ const googleVerification = async (clientId, idToken) => {
 const facebookVerification = (accessToken) => {
     return axios.get(`https://graph.facebook.com/me?access_token=${accessToken}`)
     .then(res => {
+        // Returns user id
         return res.data.id;
     });
 };

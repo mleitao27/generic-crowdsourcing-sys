@@ -1,3 +1,8 @@
+/* 
+ * config
+ * Description : Server configuration file.
+ */
+
 // Set admin credentials
 const admin = [
     {
@@ -21,12 +26,9 @@ const recentAnswer = 3600;
 // Offset to include an UGS in the user proximity list in meters
 const inUgsOffset = 1000;
 
-const language = 'en';
-
 // Exports
 exports.admin = admin;
 exports.userTimeout = userTimeout;
 exports.recentAnswer = recentAnswer;
 exports.inUgsOffset = inUgsOffset;
-exports.language = language;
 exports.db = db;
