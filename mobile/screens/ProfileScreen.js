@@ -10,6 +10,8 @@
 import React from 'react';
 import dictionary from '../data/dictionary.json';
 import ProfileScreenExtension from '../extension/ProfileScreenExtension';
+import GenercicProfile from '../components/GenericProfile';
+import { ScrollView } from 'react-native';
 
 /************************************************
  * 
@@ -22,7 +24,10 @@ const ProfileScreen = props => {
     ************************************************/
     // Renders the profile screen component from the extension
     return (
-        <ProfileScreenExtension navigation={props.navigation} />
+        <ScrollView centerContent={true}>
+            <GenercicProfile navigation={props.navigation}/>
+            <ProfileScreenExtension navigation={props.navigation} />
+        </ScrollView>
     );
 };
 
@@ -31,6 +36,7 @@ const ProfileScreen = props => {
 ProfileScreen.navigationOptions = (navData) => {
     return (
         {
+            headerTitle: dictionary[navData.navigation.state.params.language].PROFILE
         }
     );
 };

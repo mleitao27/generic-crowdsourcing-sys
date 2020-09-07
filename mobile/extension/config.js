@@ -1,29 +1,17 @@
-/* 
- * config (Object)
- * Description : Object containing all the configuration
- * variables essencial to the proper functioning of the 
- * system
- */
-
 const config = {
-    // OAuth credentials
     credentials: {
-        // Google credentials
         google: {
-            webClientId: "",
-            androidClientId: "",
-            iosClientId : ""
+            webClientId: "608098992888-pk0vantp01d0avqh423djgodbpm1k86m.apps.googleusercontent.com",
+            androidClientId: "608098992888-f7pie3rd6osvls6jt04naaqeivd2m68j.apps.googleusercontent.com",
+            iosClientId : "608098992888-v6gts7tcib7i4p6rv041kbklk2qk78lf.apps.googleusercontent.com"
         },
-        // Facebook credentials
         facebook: {
-            appId: ""
+            appId: "534270243959641"
         }
     },
-    // Server URL
-    serverURL: '',
-    // Selected languages
-    languages: ['en', 'pt', 'ru', 'fr', 'it', 'de', 'es']
+    serverURL: 'http://192.168.1.107:3000',
+    OWMAPIKey: '890df5db881a1a76b5f7ccc04b1a5e0c',
+    languages: ['en', 'pt']
 };
 
-// Export object
 export default config;
