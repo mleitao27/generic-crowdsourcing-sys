@@ -8,27 +8,29 @@
  */
 
  //Imports
-import React from 'react';
-import { Link } from 'react-router-dom';
-
-import MainButton from '../components/MainButton';
-
-/************************************************
- * 
- * COMPONENT - Screen
- * 
- ************************************************/
-const ExpiredSessionPage = props => {
-    
-    /************************************************
-     * RENDER
-     ************************************************/
-    return (           
-            <div className='centerBox'>
-                <h1>Sorry, your session expired.</h1>
-                <Link to="/login"><MainButton title='Back to Login Page'/></Link>
-            </div>
-    );
-};
-
-export default ExpiredSessionPage;
+ import React from 'react';
+ import { Link } from 'react-router-dom';
+ 
+ import MainButton from '../components/MainButton';
+ 
+ import config from '../extension/config';
+ 
+ /************************************************
+  * 
+  * COMPONENT - Screen
+  * 
+  ************************************************/
+ const ExpiredSessionPage = props => {
+     
+     /************************************************
+      * RENDER
+      ************************************************/
+     return (           
+             <div className='centerBox'>
+                 <h1>Sorry, your session expired.</h1>
+                 <Link to={`${config.homepage}/login`}><MainButton title='Back to Login Page'/></Link>
+             </div>
+     );
+ };
+ 
+ export default ExpiredSessionPage;
