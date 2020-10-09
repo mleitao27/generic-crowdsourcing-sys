@@ -13,6 +13,8 @@ import LogoutPage from './pages/LogoutPage';
 import AdminPage from './pages/AdminPage';
 import ResearcherPage from './pages/ResearcherPage';
 
+import config from './extension/config';
+
 const App = props => {
 
   // User session states
@@ -35,7 +37,7 @@ const App = props => {
     const userEmail = localStorage.getItem('userEmail');
     if (userEmail) {
       // Get user session from the server cache
-      axios.get(`http://localhost:3000/${userEmail}`)
+      axios.get(`${config.serverURL}/${userEmail}`)
       .then(res => {
         // Set state if user in cache
         setLogged(true);
@@ -58,12 +60,12 @@ const App = props => {
     <Router>
       <div>
         <Header isLogged={logged} />
-        <Route exact path='/' render={props => <LandingPage {...props} isLogged={logged} userType={userType} />} />
-        <Route path='/register' component={RegisterPage} />
-        <Route path='/login' render={props => <LoginPage {...props} onLogin={changeLoggedState} isLogged={logged} />} />
-        <Route path='/logout' render={props => <LogoutPage {...props} onLogout={changeLoggedState} isLogged={logged} userEmail={userEmail} />} />
-        <Route path='/admin' render={props => <AdminPage {...props} onLogout={changeLoggedState} isLogged={logged} adminEmail={userEmail} />} />
-        <Route path='/researcher' render={props => <ResearcherPage {...props} onLogout={changeLoggedState} isLogged={logged} userEmail={userEmail} />} />
+        <Route exact path={`${config.homepage}`} render={props => <LandingPage {...props} isLogged={logged} userType={userType} />} />
+        <Route path={`${config.homepage}/register`} component={RegisterPage} />
+        <Route path={`${config.homepage}/login`} render={props => <LoginPage {...props} onLogin={changeLoggedState} isLogged={logged} />} />
+        <Route path={`${config.homepage}/logout`} render={props => <LogoutPage {...props} onLogout={changeLoggedState} isLogged={logged} userEmail={userEmail} />} />
+        <Route path={`${config.homepage}/admin`} render={props => <AdminPage {...props} onLogout={changeLoggedState} isLogged={logged} adminEmail={userEmail} />} />
+        <Route path={`${config.homepage}/researcher`} render={props => <ResearcherPage {...props} onLogout={changeLoggedState} isLogged={logged} userEmail={userEmail} />} />
       </div>
     </Router>
   );
