@@ -53,7 +53,7 @@ const Presentation = props => {
                                 {
                                     config.presentation.map((value, index) => {
                                         PresentationElement = config.presentation[index];
-                                        return <PresentationElement key={index} />;
+                                        return <PresentationElement key={index} language={props.language} />;
                                     })
                                 }
                             </View>
