@@ -17,10 +17,12 @@ const dynamicSurvey = (req, res) => {
     // Get survey either from the surveys array
     // res.status(200).send(surveysArray[i]);
     // Or from somewhere else
+    // If also want to implement staticSurvey and pass some data to it
+    return 0;
 };
 
 // Get a survey
-const staticSurvey = (req, res) => {
+const staticSurvey = (req, res, dynamicRes) => {
     // Get static survey either from db
     // Or from somewhere else
 };
