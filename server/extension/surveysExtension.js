@@ -13,9 +13,15 @@ var feedback = require('../modules/feedback');
 var dbStorage = require('./dbExtension');
 
 // Get a survey
-const getSurvey = (req, res) => {
+const dynamicSurvey = (req, res) => {
     // Get survey either from the surveys array
     // res.status(200).send(surveysArray[i]);
+    // Or from somewhere else
+};
+
+// Get a survey
+const staticSurvey = (req, res) => {
+    // Get static survey either from db
     // Or from somewhere else
 };
 
@@ -52,7 +58,8 @@ const submitSurvey = (req, res) => {
 };
 
 // Export functions
-exports.getSurvey = getSurvey;
+exports.dynamicSurvey = dynamicSurvey;
+exports.staticSurvey = staticSurvey;
 exports.submitSurvey = submitSurvey;
 exports.processAnswer = processAnswer;
 exports.processImage = processImage;
