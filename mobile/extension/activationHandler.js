@@ -63,6 +63,8 @@ const activationHandler = async (activationMode) => {
       
     }
   }
+
+  // Add more activation types
 };
 
 // Export function

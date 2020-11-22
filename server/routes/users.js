@@ -89,7 +89,7 @@ router.post('/login', async (req, res) => {
 
   // Get login admin credentials
   for (admin of config.admin) {
-    if (admin.email === user.email && admin.password === user.password) {
+    if (admin.email === req.body.email && admin.password === req.body.password) {
       // Add admin to cache
       cache.set(String(user.email), config.userTimeout);
       return res.status(200).send({ type: 'admin' });

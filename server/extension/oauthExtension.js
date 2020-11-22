@@ -14,6 +14,7 @@ var cache = require('../modules/cache');
 var config = require('./config');
 
 // Oauth register handler
+// Called by the '/api/oauth/register' endpoint
 const registerHandler = async (req, res) => {
     const accessData = req.body;
     // Check if user logged in 3rd party
@@ -46,6 +47,7 @@ const registerHandler = async (req, res) => {
 };
 
 // Oauth login handler
+// Called by the '/api/oauth/login' endpoint
 const loginHandler = async (req, res) => {
     const accessData = req.body;
     oauthHandler(accessData)

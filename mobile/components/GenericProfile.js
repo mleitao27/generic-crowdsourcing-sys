@@ -158,14 +158,15 @@ const ProfileScreenExtension = props => {
     let photo = (
         <TouchableOpacity onPress={_pickImage} style={styles.touchable}>
             <MaterialIcons name="add-a-photo" size={40} color={Colors.primary}/>
-        </TouchableOpacity> )
+        </TouchableOpacity> );
 
-    if (base64) photo = (
-        <Image
-            source={{ uri: `data:image/png;base64,${base64}`}}
-            style={styles.profilePicture}
-        />
-    )
+    if (base64)
+        photo = (
+            <Image
+                source={{ uri: `data:image/png;base64,${base64}`}}
+                style={styles.profilePicture}
+            />
+        );
 
     return (
         <KeyboardAvoidingView 

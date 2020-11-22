@@ -12,51 +12,88 @@ var surveysArray = require('./surveys/surveysArray').surveysArray;
 var feedback = require('../modules/feedback');
 var dbStorage = require('./dbExtension');
 
+var cache = require('../modules/cache');
+
+const survey1 = require('./surveys/survey1.json');
+const survey2 = require('./surveys/survey2.json');
+const survey3 = require('./surveys/survey3.json');
+
 // Get a survey
-const dynamicSurvey = (req, res) => {
-    // Get survey either from the surveys array
-    // res.status(200).send(surveysArray[i]);
-    // Or from somewhere else
-    // If also want to implement staticSurvey and pass some data to it
-    return 0;
+// Called by the '/api/surveys/' endpoint
+const dynamicSurvey = async (req, res) => {
+    const result = await cache.get(req.body.email);
+    // If user not in cache
+    if (typeof result === 'undefined') res.status(404).send();
+    else {
+        console.log('dynamic survey');
+        // Get survey either from the surveys array
+        // res.status(200).send(surveysArray[i]);
+        // Or from somewhere else
+        // If also want to implement staticSurvey and pass some data to it
+        return 0;
+    }
 };
 
 // Get a survey
-const staticSurvey = (req, res, dynamicRes) => {
-    // Get static survey either from db
-    // Or from somewhere else
+// Called by the '/api/surveys/' endpoint
+const staticSurvey = async (req, res, dynamicRes) => {
+    const result = await cache.get(req.body.email);
+    // If user not in cache
+    if (typeof result === 'undefined') res.status(404).send();
+    else {
+        // Get static survey either from db
+        // Or from somewhere else
+        res.status(200).send({form:survey1});
+    }
 };
 
 // Get info to help answer survey
+// Called by the '/api/surveys/getInfo' endpoint
 const getInfo = async (req, res) => {
-    
+    const result = await cache.get(req.body.email);
+    // If user not in cache
+    if (typeof result === 'undefined') res.status(404).send();
+    else {
+
+    }
 };
 
 // Submit and process survey answer
+// Called by the '/api/surveys/answer' endpoint
 const processAnswer = async (req, res) => {
-    // Get immediate Feedback
-    // feedback.immediate();
-
-    // Get differenciated Feedback
-    // feedback.differenciated();
-
-    // Get database storage
-    // dbStorage.storeAnswer();
+    const result = await cache.get(req.body.email);
+    // If user not in cache
+    if (typeof result === 'undefined') res.status(404).send();
+    else {
+        dbStorage.storeAnswer(req.body.email, req.body.answer);
+        res.status(200).send();
+    }
 };
 
 // Submit and process image as (part of) survey answer
+// Called by the '/api/surveys/answerImage' endpoint
 const processImage = async (req, res) => {
-   
-};
+    const result = await cache.get(req.body.email);
+    // If user not in cache
+    if (typeof result === 'undefined') res.status(404).send();
+    else {
 
-// Get feedback of an answer
-const returnFeedback = (req, res) => {
-    
+    }
 };
 
 // Submit a new survey to the server
-const submitSurvey = (req, res) => {
-    
+// Called by the '/api/surveys/submit' endpoint
+const submitSurvey = async (req, res) => {
+    const result = await cache.get(req.body.email);
+    // If user not in cache
+    if (typeof result === 'undefined') res.status(404).send();
+    else {
+        try {
+            dbStorage.storeForm(req.body.email, JSON.parse(req.body.json));
+        } catch(e) {
+            res.status(415).send();
+        }
+    }
 };
 
 // Export functions
@@ -65,5 +102,4 @@ exports.staticSurvey = staticSurvey;
 exports.submitSurvey = submitSurvey;
 exports.processAnswer = processAnswer;
 exports.processImage = processImage;
-exports.returnFeedback = returnFeedback;
 exports.getInfo = getInfo;

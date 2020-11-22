@@ -21,7 +21,8 @@
         "NO_PRESENTATION": "No tutorial presentation provided",
         "UNEXPEDTED_ERROR": "Unexpected error. Contact system admin.",
         "LOGIN_TIMEOUT": "Login Timeout.",
-        "UPDATE_PHOTO": "Update Photo"
+        "UPDATE_PHOTO": "Update Photo",
+        "POINTS":"Points"
     },
     "pt": {
         "PROFILE": "Perfil",
@@ -45,7 +46,8 @@
         "NO_PRESENTATION": "Nenhuma apresentação de tutorial fornecida",
         "UNEXPEDTED_ERROR": "Erro inesperado. Contate o administrador do sistema.",
         "LOGIN_TIMEOUT": "Tempo limite de login.",
-        "UPDATE_PHOTO": "Atualizar foto"
+        "UPDATE_PHOTO": "Atualizar foto",
+        "POINTS":"Pontos"
     },
     "ru": {
         "PROFILE": "Профиль",
@@ -69,7 +71,8 @@
         "NO_PRESENTATION": "Учебная презентация не предусмотрена",
         "UNEXPEDTED_ERROR": "Неожиданная ошибка. Свяжитесь с системным администратором.",
         "LOGIN_TIMEOUT": "Таймаут входа.",
-        "UPDATE_PHOTO": "Обновить фото"
+        "UPDATE_PHOTO": "Обновить фото",
+        "POINTS":"точки"
     },
     "fr": {
         "PROFILE": "Profil",
@@ -93,7 +96,8 @@
         "NO_PRESENTATION": "Aucune présentation de tutoriel fournie",
         "UNEXPEDTED_ERROR": "Erreur inattendue. Contactez l'administrateur système.",
         "LOGIN_TIMEOUT": "Délai de connexion.",
-        "UPDATE_PHOTO": "Mettre à jour la photo"
+        "UPDATE_PHOTO": "Mettre à jour la photo",
+        "POINTS":"Points"
     },
     "it": {
         "PROFILE": "Profilo",
@@ -117,7 +121,8 @@
         "NO_PRESENTATION": "Nessuna presentazione tutorial fornita",
         "UNEXPEDTED_ERROR": "Errore inaspettato. Contatta l'amministratore di sistema.",
         "LOGIN_TIMEOUT": "Timeout di accesso.",
-        "UPDATE_PHOTO": "Aggiorna foto"
+        "UPDATE_PHOTO": "Aggiorna foto",
+        "POINTS":"Punti"
     },
     "de": {
         "PROFILE": "Profil",
@@ -141,7 +146,8 @@
         "NO_PRESENTATION": "Keine Tutorial-Präsentation bereitgestellt",
         "UNEXPEDTED_ERROR": "Unerwarteter Fehler. Wenden Sie sich an den Systemadministrator.",
         "LOGIN_TIMEOUT": "Zeitüberschreitung beim Anmelden.",
-        "UPDATE_PHOTO": "Foto aktualisieren"
+        "UPDATE_PHOTO": "Foto aktualisieren",
+        "POINTS":"Punkte"
     },
     "es": {
         "PROFILE": "Perfil",
@@ -165,6 +171,7 @@
         "NO_PRESENTATION": "No se proporciona una presentación tutorial",
         "UNEXPEDTED_ERROR": "Error inesperado. Comuníquese con el administrador del sistema.",
         "LOGIN_TIMEOUT": "Se terminó el tiempo para la autenticación.",
-        "UPDATE_PHOTO": "Actualizar foto"
+        "UPDATE_PHOTO": "Actualizar foto",
+        "POINTS":"Puntos"
     }
 }

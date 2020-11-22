@@ -1,0 +1,18 @@
+{
+	"pages": [
+		{
+			"name": "page1",			
+			"elements": [
+				{
+					"type": "radiogroup",
+					"name": "Is it afternoon?",
+					"choices": [
+						"Yes",
+						"No"
+					],
+					"id": "AFTERNOON"
+				}				
+			]
+		}
+	]
+}

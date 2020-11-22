@@ -24,7 +24,7 @@ const ProfileScreen = props => {
     ************************************************/
     // Renders the profile screen component from the extension
     return (
-        <ScrollView centerContent={true}>
+        <ScrollView>
             <GenercicProfile navigation={props.navigation}/>
             <ProfileScreenExtension navigation={props.navigation} />
         </ScrollView>

@@ -78,16 +78,22 @@ const MenuScreen = props => {
     let welcomeContent = <View />;
     if (typeof dictionaryExtension[props.language].WELCOME !== 'undefined')
         welcomeContent = <Text style={styles.text}>{dictionaryExtension[props.language].WELCOME}</Text>
+    
+    let presentationContent = <View/>;
+    if (config.presentation && config.presentation.length > 0)
+        presentationContent = (
+            <TouchableOpacity onPress={() => setInfoShow(true)}>
+                <Ionicons name="ios-information-circle-outline" size={24} color={Colors.primary} />
+                <Presentation language={props.language} infoShow={infoShow} close={() => setInfoShow(false)} />
+            </TouchableOpacity>
+        );
 
     /************************************************
      * RENDER
     ************************************************/
     return (
         <SafeAreaView style={globalStyles.androidSafeArea}>
-            <TouchableOpacity onPress={() => setInfoShow(true)}>
-                <Ionicons name="ios-information-circle-outline" size={24} color={Colors.primary} />
-                <Presentation language={props.language} infoShow={infoShow} close={() => setInfoShow(false)} />
-            </TouchableOpacity>
+            {presentationContent}
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={require('../extension/assets/landing_logo.png')} />
