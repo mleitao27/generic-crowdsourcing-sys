@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Download from "../components/Download";
 import axios from 'axios';
 import config from './config';
 
@@ -116,6 +116,7 @@ const ResearcherPageExtension = props => {
     let content = (
         <React.Fragment>
             <h1>Researcher Page</h1>
+            <Download/>
             <textarea placeholder="Write your JSON Form here!"  rows='10' className='textarea' value={value} onChange={onChangeText} />
             <input className="fileInput" type="file" name="form" accept=".json" onChange={onChangeFile} />
             <MainButton title='Send JSON' onClick={jsonHandler.bind(this, value, props.userEmail)}></MainButton>
