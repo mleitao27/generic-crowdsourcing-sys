@@ -25,12 +25,18 @@ const dynamicSurvey = async (req, res) => {
     // If user not in cache
     if (typeof result === 'undefined') res.status(404).send();
     else {
-        console.log('dynamic survey');
+        const date = new Date();
         // Get survey either from the surveys array
         // res.status(200).send(surveysArray[i]);
         // Or from somewhere else
         // If also want to implement staticSurvey and pass some data to it
-        return 0;
+        if (date.getHours() >= 20 && date.getHours() < 7)
+            return survey3;
+        else if (date.getHours() >= 7 && date.getHours() < 12)
+            return survey1;
+        else if (date.getHours() >= 12 && date.getHours() < 20)
+            return survey2;
+        else return null;
     }
 };
 
@@ -43,7 +49,9 @@ const staticSurvey = async (req, res, dynamicRes) => {
     else {
         // Get static survey either from db
         // Or from somewhere else
-        res.status(200).send({form:survey1});
+        if (dynamicRes === null)
+            res.status(200).send({form:survey1});
+        else res.status(200).send({form:dynamicRes});
     }
 };
 
