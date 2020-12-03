@@ -43,8 +43,8 @@ router.post('/answerImage', upload.single(), async (req, res) => {
 
 // Get feedback of an answer
 router.post('/feedback', async (req, res) => {
-    var immediateRes = feedback.immediate(req, res);
-    feedback.differenciated(req, res, immediateRes);
+    feedback.immediate(req, res);
+    feedback.differenciated(req, res);
 });
 
 // Get info to help answer survey

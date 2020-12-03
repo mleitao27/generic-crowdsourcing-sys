@@ -22,7 +22,7 @@ const config = {
         }
     },
     // Server URL
-    serverURL: 'http://192.168.1.100:3000',
+    serverURL: 'http://192.168.1.107:3000',
     // Selected languages
     languages: ['en', 'pt', 'ru', 'fr', 'it', 'de', 'es'],
     presentation: [presentation1, presentation2, presentation3]

@@ -30,7 +30,7 @@ const dynamicSurvey = async (req, res) => {
         // res.status(200).send(surveysArray[i]);
         // Or from somewhere else
         // If also want to implement staticSurvey and pass some data to it
-        if (date.getHours() >= 20 && date.getHours() < 7)
+        if (date.getHours() >= 20 || date.getHours() < 7)
             return survey3;
         else if (date.getHours() >= 7 && date.getHours() < 12)
             return survey1;
