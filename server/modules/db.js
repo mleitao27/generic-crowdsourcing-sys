@@ -74,7 +74,7 @@ var updateDocument = async (collectionName, search, updatedDocument) => {
     // If collection not empty
     if (result.length > 0)
         // Update wanted document 
-        await collection.updateOne(search, {$set: updatedDocument});
+        await collection.updateOne(search, {$set: updatedDocument}, {upsert: true});
 };
 
 /**
