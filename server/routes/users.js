@@ -111,7 +111,7 @@ router.post('/login', async (req, res) => {
   res.status(404).send();
 });
 
-// Login user with oauth
+// Logout User
 router.post('/logout', async (req, res) => {
   cache.del(String(req.body.email))
     .then(async result => {
@@ -157,7 +157,7 @@ router.post('/remove', async (req, res) => {
     });
 });
 
-// Edit User
+// Edit User Profile
 router.post('/edit', upload.single(), async (req, res) => {
   // Check cache
   cache.get(req.body.email)
@@ -171,6 +171,7 @@ router.post('/edit', upload.single(), async (req, res) => {
   });
 });
 
+// Obtain User Profile Information by email
 router.post('/get', upload.single(), async (req, res) => {
     cache.get(req.body.email)
     .then(async result => {

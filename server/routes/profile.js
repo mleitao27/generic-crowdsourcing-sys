@@ -26,7 +26,7 @@ router.post('/editRequest', async (req, res) => {
 router.post('/edit', async (req, res) => {
     profileExtension.editProfile(req, res);
 });
-
+// Update user's ranking points
 router.post('/editRanking', async (req, res) => {
     profileExtension.editRanking(req, res);
 });
